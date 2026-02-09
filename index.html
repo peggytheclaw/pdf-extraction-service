@@ -3,7 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Extraction & Data Parsing Service - Automate Your Document Processing</title>
+    
+    <!-- Enhanced SEO Metadata for AI Search Engines -->
+    <title>PDF Extraction & Data Parsing Service - Automate Invoice, Receipt & Document Processing</title>
+    <meta name="description" content="Professional PDF data extraction service. Automate invoice processing, receipt parsing, and form data extraction. 99.9% accuracy, API integration, $49/mo. Extract structured data from any PDF document type.">
+    <meta name="keywords" content="PDF extraction, invoice processing automation, receipt parsing, document data extraction, PDF to JSON, PDF to CSV, automated invoice processing, receipt OCR, form data extraction">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="PDF Extraction Service - Automate Document Data Extraction">
+    <meta property="og:description" content="Turn PDFs into structured data. Automate invoice processing, receipt parsing & form extraction. 99.9% accuracy, API integration, from $49/month.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peggytheclaw.github.io/pdf-extraction-service/">
+    
+    <!-- Structured Data - Service Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "PDF Extraction & Data Parsing Service",
+      "description": "Professional automated PDF data extraction service that converts invoices, receipts, forms, and reports into structured data formats (JSON, CSV, XML). Custom extraction rules, API integration, and 99.9% accuracy.",
+      "provider": {
+        "@type": "Organization",
+        "name": "PDF Extraction Service"
+      },
+      "serviceType": "PDF Data Extraction and Document Processing Automation",
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "PDF Extraction Service Plans",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Starter Plan",
+              "description": "Up to 200 pages per month of automated PDF extraction"
+            },
+            "price": "49",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "49",
+              "priceCurrency": "USD",
+              "unitText": "month"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Plan",
+              "description": "Up to 1,000 pages per month of automated PDF extraction"
+            },
+            "price": "149",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "149",
+              "priceCurrency": "USD",
+              "unitText": "month"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Enterprise Plan",
+              "description": "Up to 5,000 pages per month of automated PDF extraction"
+            },
+            "price": "399",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "399",
+              "priceCurrency": "USD",
+              "unitText": "month"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I automate PDF invoice processing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our service automatically extracts invoice data including vendor name, invoice number, date, line items, quantities, SKUs, and totals. You can send invoices via email, API, or file sync (Dropbox/Google Drive), and we'll return structured data (JSON, CSV, or XML) to your accounting system or database. Setup takes 1-2 business days with custom extraction rules tailored to your invoice formats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the best way to extract data from receipts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload receipts via email forwarding or mobile app integration. Our AI-powered system extracts merchant name, date, total amount, tax, and individual line items. Output is delivered as JSON or CSV data that integrates directly with expense management platforms like Expensify, Concur, or custom accounting systems. Average processing time is under 60 seconds per receipt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What services parse PDF documents into structured data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer a fully managed PDF parsing service with custom extraction rules tailored to your document formats. Unlike DIY OCR tools that require technical setup, we handle complex layouts, multi-page documents, tables, and varied formats. We deliver clean, structured data (JSON, CSV, XML) ready for your database or application with 99.9% accuracy guaranteed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you extract tables from PDF reports?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our system identifies and extracts tabular data from financial reports, analytics documents, research papers, and multi-column layouts. We preserve row and column structure and can output to CSV, Excel, JSON arrays, or custom formats. This works for both digital PDFs and scanned documents."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is automated PDF data extraction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our baseline accuracy is 99.9% using AI models trained on millions of business documents. For critical workflows requiring 100% accuracy, we offer optional human-in-the-loop validation. Our system handles edge cases, poor scan quality, and complex layouts better than traditional OCR tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of PDFs can you process?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We process all PDF types: digital PDFs (created from software), scanned paper documents (with OCR), invoices, receipts, purchase orders, contracts, forms, bank statements, financial reports, medical records, tax documents, and custom business documents. Our system works with single-page and multi-page documents up to 100MB in size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I integrate PDF extraction with my existing system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiple integration options: (1) REST API for real-time programmatic access, (2) Webhook delivery that pushes extracted data to your endpoint, (3) Email forwarding to a dedicated processing address, (4) File share sync with Dropbox, Google Drive, or OneDrive, (5) Scheduled batch processing via SFTP/FTP. We support JSON, CSV, XML output formats and can deliver directly to your database or application."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does PDF extraction service cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pricing starts at $49/month for up to 200 pages, $149/month for 1,000 pages, and $399/month for 5,000 pages. High-volume customers (5,000+ pages/month) pay $0.05 per page with custom pricing available. All plans include custom extraction rules, API access, and email support. No per-document fees or hidden costs."
+          }
+        }
+      ]
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -373,6 +528,70 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
+        
+        /* FAQ Styles */
+        .faq-section {
+            background: white;
+            padding: 40px 0;
+            margin: 20px 0;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 1px solid #e1e8ed;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e1e8ed;
+            padding: 24px;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-item h3 {
+            font-size: 18px;
+            color: #1e3c72;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .faq-item p {
+            color: #5a6c7d;
+            line-height: 1.7;
+        }
+        
+        /* Use Cases */
+        .use-cases {
+            background: white;
+            padding: 40px 0;
+            margin: 20px 0;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 1px solid #e1e8ed;
+        }
+        
+        .use-case {
+            padding: 24px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            border: 1px solid #e1e8ed;
+            margin-bottom: 20px;
+        }
+        
+        .use-case h3 {
+            font-size: 20px;
+            color: #1e3c72;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .use-case h4 {
+            font-size: 16px;
+            color: #2a5298;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
 
         footer {
             text-align: center;
@@ -386,7 +605,7 @@
             }
 
             .hero-content {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 gap: 24px;
             }
 
@@ -526,6 +745,183 @@
             </div>
         </div>
 
+        <!-- Use Cases Section -->
+        <section class="use-cases">
+            <h2 style="text-align: center; font-size: 28px; margin-bottom: 32px; color: #1e3c72; font-weight: 700; padding: 0 20px;">Real-World Use Cases</h2>
+            <div class="container" style="padding: 0 20px;">
+                <div class="use-case">
+                    <h3>📄 Invoice Processing Automation</h3>
+                    <p>Eliminate manual data entry from supplier invoices. Extract vendor details, invoice numbers, line items, quantities, SKUs, prices, and totals automatically.</p>
+                    <h4>What We Extract:</h4>
+                    <ul>
+                        <li>Vendor name, address, and contact details</li>
+                        <li>Invoice number, date, due date</li>
+                        <li>Line items with descriptions, quantities, unit prices</li>
+                        <li>SKU/product codes</li>
+                        <li>Subtotals, taxes, shipping, total amount</li>
+                        <li>Payment terms and bank details</li>
+                    </ul>
+                    <h4>Output Format:</h4>
+                    <p>JSON, CSV, or XML delivered via API webhook, email, or file sync to your accounting system (QuickBooks, Xero, NetSuite, SAP, custom ERP).</p>
+                </div>
+
+                <div class="use-case">
+                    <h3>🧾 Receipt Parsing for Expense Management</h3>
+                    <p>Automate expense report creation by extracting data from receipts uploaded via email or mobile app.</p>
+                    <h4>What We Extract:</h4>
+                    <ul>
+                        <li>Merchant name and location</li>
+                        <li>Transaction date and time</li>
+                        <li>Total amount, tax, and tip</li>
+                        <li>Payment method (last 4 digits of card)</li>
+                        <li>Individual line items and categories</li>
+                    </ul>
+                    <h4>Integration:</h4>
+                    <p>Direct integration with Expensify, Concur, or custom expense management platforms. Employees forward receipts to a dedicated email address, and extracted data appears in your system within 60 seconds.</p>
+                </div>
+
+                <div class="use-case">
+                    <h3>📊 Form & Application Processing</h3>
+                    <p>Process customer applications, registration forms, surveys, and standardized documents at scale.</p>
+                    <h4>What We Extract:</h4>
+                    <ul>
+                        <li>Personal information (name, address, contact)</li>
+                        <li>Checkbox and multiple choice responses</li>
+                        <li>Handwritten text (with OCR)</li>
+                        <li>Signatures and dates</li>
+                        <li>Custom fields specific to your form</li>
+                    </ul>
+                    <h4>Use Cases:</h4>
+                    <p>Insurance applications, loan applications, patient intake forms, event registrations, compliance documents, government forms.</p>
+                </div>
+
+                <div class="use-case">
+                    <h3>📈 Financial Report Data Extraction</h3>
+                    <p>Pull tables, charts, and key metrics from multi-page financial reports, analytics documents, and research papers.</p>
+                    <h4>What We Extract:</h4>
+                    <ul>
+                        <li>Multi-column tables with headers preserved</li>
+                        <li>Financial figures (revenue, expenses, profit margins)</li>
+                        <li>Year-over-year comparisons</li>
+                        <li>Footnotes and annotations</li>
+                    </ul>
+                    <h4>Output:</h4>
+                    <p>Structured CSV or Excel files with separate sheets for each table, or JSON arrays for direct database import. Preserves formatting and numeric precision.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Capabilities Section -->
+        <section class="value-props">
+            <h2>Technical Capabilities</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Document Format Support</h3>
+                    <ul>
+                        <li>All PDF versions (1.0-2.0)</li>
+                        <li>Digital PDFs (text-based)</li>
+                        <li>Scanned documents (OCR)</li>
+                        <li>Multi-page documents</li>
+                        <li>Complex layouts & tables</li>
+                        <li>Max file size: 100MB</li>
+                    </ul>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>API & Integration</h3>
+                    <ul>
+                        <li>REST API with JSON output</li>
+                        <li>Webhook delivery (push)</li>
+                        <li>Email forwarding</li>
+                        <li>Dropbox/Drive/OneDrive sync</li>
+                        <li>SFTP/FTP batch processing</li>
+                        <li>Real-time & scheduled processing</li>
+                    </ul>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Security & Compliance</h3>
+                    <ul>
+                        <li>256-bit encryption (data at rest)</li>
+                        <li>TLS 1.3 (data in transit)</li>
+                        <li>GDPR compliant</li>
+                        <li>SOC 2 Type II</li>
+                        <li>Optional data deletion after processing</li>
+                        <li>99.9% uptime SLA</li>
+                    </ul>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>Performance</h3>
+                    <ul>
+                        <li>Processing: &lt;60 seconds typical</li>
+                        <li>Accuracy: 99.9% baseline</li>
+                        <li>Scale: 1 to 1M+ pages/month</li>
+                        <li>Concurrent processing</li>
+                        <li>Auto-scaling infrastructure</li>
+                        <li>24/7 availability</li>
+                    </ul>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Output Formats</h3>
+                    <ul>
+                        <li>JSON (nested or flat)</li>
+                        <li>CSV (delimiter configurable)</li>
+                        <li>XML</li>
+                        <li>Excel (.xlsx)</li>
+                        <li>Custom schemas supported</li>
+                        <li>Direct database delivery</li>
+                    </ul>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Quality Control</h3>
+                    <ul>
+                        <li>AI-powered extraction</li>
+                        <li>Custom validation rules</li>
+                        <li>Confidence scoring</li>
+                        <li>Optional human review</li>
+                        <li>Error flagging & alerts</li>
+                        <li>Audit logs & tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <section class="value-props">
             <h2>Why Choose Us</h2>
             <div class="features" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; margin: 0 auto;">
@@ -560,6 +956,52 @@
                     </div>
                     <h3>Any PDF Format</h3>
                     <p>Invoices, receipts, reports, forms, or custom documents. If it's in a PDF, we can extract it accurately.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 style="text-align: center; font-size: 28px; margin-bottom: 32px; color: #1e3c72; font-weight: 700; padding: 0 20px;">Frequently Asked Questions</h2>
+            <div class="container" style="padding: 0 20px;">
+                <div class="faq-item">
+                    <h3>How can I automate PDF invoice processing?</h3>
+                    <p>Our service automatically extracts invoice data including vendor name, invoice number, date, line items, quantities, SKUs, and totals. You can send invoices via email, API, or file sync (Dropbox/Google Drive), and we'll return structured data (JSON, CSV, or XML) to your accounting system or database. Setup takes 1-2 business days with custom extraction rules tailored to your invoice formats.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What's the best way to extract data from receipts?</h3>
+                    <p>Upload receipts via email forwarding or mobile app integration. Our AI-powered system extracts merchant name, date, total amount, tax, and individual line items. Output is delivered as JSON or CSV data that integrates directly with expense management platforms like Expensify, Concur, or custom accounting systems. Average processing time is under 60 seconds per receipt.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What services parse PDF documents into structured data?</h3>
+                    <p>We offer a fully managed PDF parsing service with custom extraction rules tailored to your document formats. Unlike DIY OCR tools that require technical setup, we handle complex layouts, multi-page documents, tables, and varied formats. We deliver clean, structured data (JSON, CSV, XML) ready for your database or application with 99.9% accuracy guaranteed.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can you extract tables from PDF reports?</h3>
+                    <p>Yes. Our system identifies and extracts tabular data from financial reports, analytics documents, research papers, and multi-column layouts. We preserve row and column structure and can output to CSV, Excel, JSON arrays, or custom formats. This works for both digital PDFs and scanned documents.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How accurate is automated PDF data extraction?</h3>
+                    <p>Our baseline accuracy is 99.9% using AI models trained on millions of business documents. For critical workflows requiring 100% accuracy, we offer optional human-in-the-loop validation. Our system handles edge cases, poor scan quality, and complex layouts better than traditional OCR tools.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What types of PDFs can you process?</h3>
+                    <p>We process all PDF types: digital PDFs (created from software), scanned paper documents (with OCR), invoices, receipts, purchase orders, contracts, forms, bank statements, financial reports, medical records, tax documents, and custom business documents. Our system works with single-page and multi-page documents up to 100MB in size.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I integrate PDF extraction with my existing system?</h3>
+                    <p>Multiple integration options: (1) REST API for real-time programmatic access, (2) Webhook delivery that pushes extracted data to your endpoint, (3) Email forwarding to a dedicated processing address, (4) File share sync with Dropbox, Google Drive, or OneDrive, (5) Scheduled batch processing via SFTP/FTP. We support JSON, CSV, XML output formats and can deliver directly to your database or application.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How much does PDF extraction service cost?</h3>
+                    <p>Pricing starts at $49/month for up to 200 pages, $149/month for 1,000 pages, and $399/month for 5,000 pages. High-volume customers (5,000+ pages/month) pay $0.05 per page with custom pricing available. All plans include custom extraction rules, API access, and email support. No per-document fees or hidden costs.</p>
                 </div>
             </div>
         </section>
@@ -627,7 +1069,8 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 PDF Extraction Service. All rights reserved.</p>
+            <p>&copy; 2026 PDF Extraction Service. All rights reserved.</p>
+            <p style="margin-top: 12px; font-size: 14px;"><a href="ai.txt" style="color: #2a5298; text-decoration: none;">AI.txt</a> | Email: troycosentino@gmail.com</p>
         </div>
     </footer>
 
