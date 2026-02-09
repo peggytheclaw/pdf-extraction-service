@@ -44,28 +44,32 @@
 
         .hero {
             background: white;
-            padding: 40px 0;
+            padding: 60px 0 40px 0;
             margin: 20px 0;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
             border: 1px solid #e1e8ed;
         }
 
-        .hero h2 {
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-left h2 {
             font-size: 36px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: #1e3c72;
             font-weight: 700;
             line-height: 1.2;
         }
 
-        .hero-subtitle {
+        .hero-left p {
             font-size: 18px;
             color: #5a6c7d;
-            margin-bottom: 32px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.7;
         }
 
         .calculator {
@@ -86,24 +90,8 @@
             font-weight: 700;
         }
 
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .calculator-left {
-            padding-right: 20px;
-            border-right: 2px solid #e1e8ed;
-        }
-
-        .calculator-right {
-            padding-left: 20px;
-        }
-
         .input-group {
-            margin-bottom: 0;
+            margin-bottom: 24px;
         }
 
         label {
@@ -387,8 +375,13 @@
         }
 
         @media (max-width: 768px) {
-            .hero h2 {
+            .hero-left h2 {
                 font-size: 28px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
 
             .features {
@@ -397,22 +390,6 @@
 
             .calculator {
                 padding: 24px;
-            }
-
-            .calculator-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .calculator-left {
-                padding-right: 0;
-                border-right: none;
-                border-bottom: 2px solid #e1e8ed;
-                padding-bottom: 20px;
-            }
-
-            .calculator-right {
-                padding-left: 0;
             }
         }
     </style>
@@ -427,56 +404,54 @@
 
     <div class="container">
         <section class="hero">
-            <h2>Turn PDFs Into Actionable Data</h2>
-            <p class="hero-subtitle">Stop manually copying data from PDFs. Our service extracts, parses, and delivers structured data directly to your systems—automatically.</p>
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h2>Turn PDFs Into Actionable Data</h2>
+                    <p>Stop manually copying data from PDFs. Our service extracts, parses, and delivers structured data directly to your systems—automatically.</p>
+                </div>
 
-            <div class="calculator">
-                <h3>Calculate Your Savings</h3>
-                
-                <div class="calculator-grid">
-                    <div class="calculator-left">
-                        <div class="input-group" style="margin-bottom: 24px;">
-                            <label for="minutes">Minutes to process one PDF manually</label>
-                            <input type="range" id="minutes" min="1" max="30" value="5" step="1">
-                            <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
-                                <span id="minutesDisplay">5</span> minutes
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="pdfs">PDFs processed per month</label>
-                            <input type="range" id="pdfs" min="10" max="1000" value="100" step="10">
-                            <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
-                                <span id="pdfsDisplay">100</span> PDFs
-                            </div>
+                <div class="calculator">
+                    <h3>Calculate Your Savings</h3>
+                    
+                    <div class="input-group">
+                        <label for="minutes">Minutes to process one PDF manually</label>
+                        <input type="range" id="minutes" min="1" max="30" value="5" step="1">
+                        <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
+                            <span id="minutesDisplay">5</span> minutes
                         </div>
                     </div>
 
-                    <div class="calculator-right">
-                        <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 2px solid #e1e8ed;">
-                            <div style="text-align: center; color: #5a6c7d; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
-                                TIME SAVED PER MONTH
-                            </div>
-                            <div style="text-align: center; font-size: 40px; font-weight: 700; color: #1e3c72;">
-                                <span id="hoursSaved">8.3</span> <span style="font-size: 24px;">hours</span>
-                            </div>
-                            <div style="text-align: center; color: #2a5298; font-size: 20px; font-weight: 600; margin-top: 8px;">
-                                ≈ <span id="costSaved">$332</span> in labor saved*
-                            </div>
+                    <div class="input-group">
+                        <label for="pdfs">PDFs processed per month</label>
+                        <input type="range" id="pdfs" min="10" max="1000" value="100" step="10">
+                        <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
+                            <span id="pdfsDisplay">100</span> PDFs
                         </div>
+                    </div>
 
-                        <div style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 24px; border-radius: 12px; color: white;">
-                            <div style="text-align: center; font-size: 14px; font-weight: 600; margin-bottom: 8px; opacity: 0.9;">
-                                YOUR MONTHLY COST
-                            </div>
-                            <div style="text-align: center; font-size: 48px; font-weight: 700;">
-                                $<span id="serviceCost">49</span>
-                            </div>
+                    <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 2px solid #e1e8ed;">
+                        <div style="text-align: center; color: #5a6c7d; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
+                            TIME SAVED PER MONTH
                         </div>
+                        <div style="text-align: center; font-size: 40px; font-weight: 700; color: #1e3c72;">
+                            <span id="hoursSaved">8.3</span> <span style="font-size: 24px;">hours</span>
+                        </div>
+                        <div style="text-align: center; color: #2a5298; font-size: 20px; font-weight: 600; margin-top: 8px;">
+                            ≈ <span id="costSaved">$332</span> in labor saved*
+                        </div>
+                    </div>
 
-                        <div style="text-align: center; color: #5a6c7d; font-size: 12px; margin-top: 12px;">
-                            *Based on $40/hour labor cost
+                    <div style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 24px; border-radius: 12px; color: white;">
+                        <div style="text-align: center; font-size: 14px; font-weight: 600; margin-bottom: 8px; opacity: 0.9;">
+                            YOUR MONTHLY COST
                         </div>
+                        <div style="text-align: center; font-size: 48px; font-weight: 700;">
+                            $<span id="serviceCost">49</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; color: #5a6c7d; font-size: 12px; margin-top: 12px;">
+                        *Based on $40/hour labor cost
                     </div>
                 </div>
             </div>
