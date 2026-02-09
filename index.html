@@ -44,25 +44,25 @@
 
         .hero {
             background: white;
-            padding: 60px 0;
-            margin: 40px 0;
+            padding: 40px 0;
+            margin: 20px 0;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
             border: 1px solid #e1e8ed;
         }
 
         .hero h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
+            font-size: 36px;
+            margin-bottom: 12px;
             color: #1e3c72;
             font-weight: 700;
             line-height: 1.2;
         }
 
         .hero-subtitle {
-            font-size: 20px;
+            font-size: 18px;
             color: #5a6c7d;
-            margin-bottom: 48px;
+            margin-bottom: 32px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -72,18 +72,34 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border: 3px solid #2a5298;
             border-radius: 16px;
-            padding: 40px;
-            max-width: 700px;
+            padding: 32px;
+            max-width: 1000px;
             margin: 0 auto;
             box-shadow: 0 6px 20px rgba(42, 82, 152, 0.15);
         }
 
         .calculator h3 {
-            font-size: 28px;
-            margin-bottom: 32px;
+            font-size: 24px;
+            margin-bottom: 24px;
             color: #1e3c72;
             text-align: center;
             font-weight: 700;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .calculator-left {
+            padding-right: 20px;
+            border-right: 2px solid #e1e8ed;
+        }
+
+        .calculator-right {
+            padding-left: 20px;
         }
 
         .input-group {
@@ -172,8 +188,8 @@
 
         .value-props {
             background: white;
-            padding: 60px 0;
-            margin: 40px 0;
+            padding: 40px 0;
+            margin: 20px 0;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
             border: 1px solid #e1e8ed;
@@ -181,20 +197,20 @@
 
         .value-props h2 {
             text-align: center;
-            font-size: 36px;
-            margin-bottom: 48px;
+            font-size: 28px;
+            margin-bottom: 32px;
             color: #1e3c72;
             font-weight: 700;
         }
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .feature {
-            padding: 32px;
+            padding: 24px;
             border-radius: 12px;
             background: #f8f9fa;
             border: 1px solid #e1e8ed;
@@ -207,9 +223,9 @@
         }
 
         .feature-icon {
-            width: 56px;
-            height: 56px;
-            margin-bottom: 20px;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-radius: 12px;
             display: flex;
@@ -218,8 +234,8 @@
         }
         
         .feature-icon svg {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             stroke: white;
             fill: none;
             stroke-width: 2;
@@ -228,16 +244,16 @@
         }
 
         .feature h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
+            font-size: 18px;
+            margin-bottom: 8px;
             color: #1e3c72;
             font-weight: 600;
         }
 
         .feature p {
             color: #5a6c7d;
-            line-height: 1.7;
-            font-size: 16px;
+            line-height: 1.6;
+            font-size: 15px;
         }
 
         .feature ul {
@@ -260,16 +276,16 @@
 
         .trust-section {
             text-align: center;
-            padding: 40px 0;
-            margin: 40px 0;
+            padding: 32px 0;
+            margin: 20px 0;
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 32px;
             flex-wrap: wrap;
-            margin-top: 32px;
+            margin-top: 24px;
         }
 
         .trust-badge {
@@ -280,8 +296,8 @@
         }
 
         .trust-badge-icon {
-            width: 64px;
-            height: 64px;
+            width: 56px;
+            height: 56px;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-radius: 50%;
             display: flex;
@@ -290,15 +306,15 @@
         }
 
         .trust-badge-icon svg {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             stroke: white;
             fill: none;
             stroke-width: 2;
         }
 
         .trust-badge-text {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #1e3c72;
         }
@@ -306,22 +322,22 @@
         .cta {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 80px 0;
-            margin: 40px 0;
+            padding: 48px 0;
+            margin: 20px 0;
             border-radius: 16px;
             text-align: center;
             box-shadow: 0 8px 24px rgba(30, 60, 114, 0.3);
         }
 
         .cta h2 {
-            font-size: 38px;
-            margin-bottom: 16px;
+            font-size: 32px;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
         .cta p {
-            font-size: 20px;
-            margin-bottom: 40px;
+            font-size: 18px;
+            margin-bottom: 32px;
             opacity: 0.95;
         }
 
@@ -372,7 +388,7 @@
 
         @media (max-width: 768px) {
             .hero h2 {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .features {
@@ -381,6 +397,22 @@
 
             .calculator {
                 padding: 24px;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .calculator-left {
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 2px solid #e1e8ed;
+                padding-bottom: 20px;
+            }
+
+            .calculator-right {
+                padding-left: 0;
             }
         }
     </style>
@@ -401,45 +433,58 @@
             <div class="calculator">
                 <h3>Calculate Your Savings</h3>
                 
-                <div class="input-group" style="margin-bottom: 24px;">
-                    <label for="minutes">How many minutes does it take to manually process one PDF?</label>
-                    <input type="range" id="minutes" min="1" max="30" value="5" step="1">
-                    <div style="text-align: center; font-size: 20px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
-                        <span id="minutesDisplay">5</span> minutes
-                    </div>
-                </div>
+                <div class="calculator-grid">
+                    <div class="calculator-left">
+                        <div class="input-group" style="margin-bottom: 24px;">
+                            <label for="minutes">Minutes to process one PDF manually</label>
+                            <input type="range" id="minutes" min="1" max="30" value="5" step="1">
+                            <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
+                                <span id="minutesDisplay">5</span> minutes
+                            </div>
+                        </div>
 
-                <div class="input-group">
-                    <label for="pdfs">How many PDFs do you process per month?</label>
-                    <input type="range" id="pdfs" min="10" max="1000" value="100" step="10">
-                    <div style="text-align: center; font-size: 20px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
-                        <span id="pdfsDisplay">100</span> PDFs
+                        <div class="input-group">
+                            <label for="pdfs">PDFs processed per month</label>
+                            <input type="range" id="pdfs" min="10" max="1000" value="100" step="10">
+                            <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
+                                <span id="pdfsDisplay">100</span> PDFs
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="result">
-                    <h4>Time Saved Per Month</h4>
-                    <div class="price"><span id="hoursSaved">8.3</span> hours</div>
-                    <div class="period">≈ <span id="costSaved">$332</span> in labor costs saved*</div>
-                </div>
+                    <div class="calculator-right">
+                        <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 2px solid #e1e8ed;">
+                            <div style="text-align: center; color: #5a6c7d; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
+                                TIME SAVED PER MONTH
+                            </div>
+                            <div style="text-align: center; font-size: 40px; font-weight: 700; color: #1e3c72;">
+                                <span id="hoursSaved">8.3</span> <span style="font-size: 24px;">hours</span>
+                            </div>
+                            <div style="text-align: center; color: #2a5298; font-size: 20px; font-weight: 600; margin-top: 8px;">
+                                ≈ <span id="costSaved">$332</span> in labor saved*
+                            </div>
+                        </div>
 
-                <div style="margin-top: 24px; padding: 20px; background: white; border-radius: 8px; border: 2px solid #e1e8ed;">
-                    <div style="text-align: center; color: #1e3c72; font-size: 18px; font-weight: 600; margin-bottom: 8px;">
-                        Your Monthly Service Cost
-                    </div>
-                    <div style="text-align: center; font-size: 32px; font-weight: 700; color: #2a5298;">
-                        $<span id="serviceCost">49</span>
-                    </div>
-                    <div style="text-align: center; color: #5a6c7d; font-size: 14px; margin-top: 12px;">
-                        *Based on $40/hour labor cost
+                        <div style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 24px; border-radius: 12px; color: white;">
+                            <div style="text-align: center; font-size: 14px; font-weight: 600; margin-bottom: 8px; opacity: 0.9;">
+                                YOUR MONTHLY COST
+                            </div>
+                            <div style="text-align: center; font-size: 48px; font-weight: 700;">
+                                $<span id="serviceCost">49</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; color: #5a6c7d; font-size: 12px; margin-top: 12px;">
+                            *Based on $40/hour labor cost
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <div class="trust-section">
-            <h2 style="color: #1e3c72; font-size: 28px; margin-bottom: 16px;">Built for Business</h2>
-            <p style="color: #5a6c7d; font-size: 18px; max-width: 600px; margin: 0 auto;">Reliable, secure, and designed to save you hours every week</p>
+            <h2 style="color: #1e3c72; font-size: 24px; margin-bottom: 12px;">Built for Business</h2>
+            <p style="color: #5a6c7d; font-size: 16px; max-width: 600px; margin: 0 auto;">Reliable, secure, and designed to save you hours every week</p>
             
             <div class="trust-badges">
                 <div class="trust-badge">
