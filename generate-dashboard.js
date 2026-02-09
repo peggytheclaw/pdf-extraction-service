@@ -22,27 +22,24 @@ try {
     data = JSON.parse(fs.readFileSync(DASHBOARD_DATA, 'utf8'));
   }
   
-  // Inject data directly into HTML
+  // Inject data directly into HTML before closing </head>
   const dataScript = `
-    <script>
-      // Embedded data (no fetch needed)
-      window.DASHBOARD_DATA = ${JSON.stringify(data, null, 2)};
-    </script>
-  `;
+  <script>
+    // Embedded data (no fetch needed)
+    window.DASHBOARD_DATA = ${JSON.stringify(data)};
+  </script>
+</head>`;
   
-  // Replace the loadPosts function to use embedded data
-  html = html.replace(
-    'async function loadPosts() {',
-    `${dataScript}
-    async function loadPosts() {
-      // Use embedded data instead of fetching
-      const data = window.DASHBOARD_DATA;`
-  );
+  html = html.replace('</head>', dataScript);
   
-  // Remove the fetch call
+  // Replace the fetch code with embedded data usage
   html = html.replace(
-    /const response = await fetch\('social-listening-dashboard\.json\?t=' \+ Date\.now\(\)\);[\s\S]*?const data = await response\.json\(\);/,
-    '// Data already embedded above'
+    `try {
+                const response = await fetch('social-listening-dashboard.json?t=' + Date.now());
+                const data = await response.json();`,
+    `try {
+                // Use embedded data instead of fetching
+                const data = window.DASHBOARD_DATA;`
   );
   
   // Write standalone dashboard
