@@ -33,6 +33,7 @@ const CONFIG = {
   },
   discordChannelId: '1470518363942818002',
   seenPostsFile: path.join(__dirname, 'social-listening-seen.json'),
+  dashboardFile: path.join(__dirname, 'social-listening-dashboard.json'),
   daysToLookBack: 1  // Only check last 24h for faster runs
 };
 
@@ -178,57 +179,72 @@ async function searchHackerNews() {
   return results;
 }
 
-// Send Discord notification
-function sendDiscordNotification(posts) {
-  if (posts.length === 0) return;
-  
-  // Sort by relevance
-  posts.sort((a, b) => calculateRelevance(b) - calculateRelevance(a));
-  
-  // Format message
-  let message = `🔍 **Social Listening Update** - Found ${posts.length} new discussion${posts.length === 1 ? '' : 's'}!\n\n`;
-  
-  const highValue = posts.filter(p => calculateRelevance(p) >= 70);
-  const mediumValue = posts.filter(p => calculateRelevance(p) >= 50 && calculateRelevance(p) < 70);
-  const lowValue = posts.filter(p => calculateRelevance(p) < 50);
-  
-  // High value posts
-  if (highValue.length > 0) {
-    message += `**🔥 HIGH VALUE (${highValue.length})**\n`;
-    for (const post of highValue.slice(0, 3)) {  // Top 3
-      const score = calculateRelevance(post);
-      message += `• **[${post.platform}]** ${post.title.slice(0, 80)}${post.title.length > 80 ? '...' : ''}\n`;
-      message += `  ${post.url}\n`;
-      message += `  ↑${post.upvotes} 💬${post.comments} • ${post.hoursAgo}h ago • Score: ${score}\n\n`;
-    }
-  }
-  
-  // Medium value posts
-  if (mediumValue.length > 0) {
-    message += `**📊 MEDIUM VALUE (${mediumValue.length})**\n`;
-    for (const post of mediumValue.slice(0, 2)) {  // Top 2
-      message += `• **[${post.platform}]** ${post.title.slice(0, 60)}...\n`;
-      message += `  ${post.url}\n`;
-    }
-    message += '\n';
-  }
-  
-  // Low value summary
-  if (lowValue.length > 0) {
-    message += `📋 ${lowValue.length} additional low-value mention${lowValue.length === 1 ? '' : 's'}\n`;
-  }
-  
-  // Send via OpenClaw message tool
+// Save posts to dashboard and send notification
+function updateDashboardAndNotify(newPosts, allPosts) {
+  // Load existing dashboard data
+  let existingPosts = [];
   try {
-    const escaped = message.replace(/"/g, '\\"').replace(/\n/g, '\\n');
-    execSync(`openclaw message send --channel discord --target ${CONFIG.discordChannelId} --message "${escaped}"`, {
-      stdio: 'inherit'
-    });
-    console.log('✅ Discord notification sent');
+    if (fs.existsSync(CONFIG.dashboardFile)) {
+      const data = JSON.parse(fs.readFileSync(CONFIG.dashboardFile, 'utf8'));
+      existingPosts = data.posts || [];
+    }
   } catch (e) {
-    console.error('❌ Failed to send Discord notification:', e.message);
-    // Fallback: just log the message
-    console.log('\n' + message);
+    console.error('Error loading existing dashboard:', e.message);
+  }
+  
+  // Merge new posts with existing (avoid duplicates)
+  const postMap = new Map();
+  for (const post of existingPosts) {
+    postMap.set(post.id, post);
+  }
+  for (const post of allPosts) {
+    post.score = calculateRelevance(post);
+    postMap.set(post.id, post);
+  }
+  
+  // Convert back to array and sort by relevance
+  const allPostsArray = Array.from(postMap.values());
+  allPostsArray.sort((a, b) => (b.score || 0) - (a.score || 0));
+  
+  // Save to dashboard file
+  const dashboardData = {
+    posts: allPostsArray,
+    lastUpdated: new Date().toISOString()
+  };
+  
+  try {
+    fs.writeFileSync(CONFIG.dashboardFile, JSON.stringify(dashboardData, null, 2));
+    console.log('✅ Dashboard updated');
+  } catch (e) {
+    console.error('❌ Failed to update dashboard:', e.message);
+  }
+  
+  // Send simple Discord notification if there are new posts
+  if (newPosts.length > 0) {
+    const highValue = newPosts.filter(p => calculateRelevance(p) >= 70).length;
+    const message = `🔔 **Social Listening Alert**
+
+Found **${newPosts.length}** new discussion${newPosts.length === 1 ? '' : 's'}!${highValue > 0 ? ` (${highValue} high-value)` : ''}
+
+📊 View dashboard: file://${path.join(__dirname, 'dashboard.html')}
+
+Auto-refreshes every 2 minutes.`;
+    
+    try {
+      const tmpFile = `/tmp/social-listening-msg-${Date.now()}.txt`;
+      fs.writeFileSync(tmpFile, message);
+      
+      execSync(`openclaw message send --channel discord --target ${CONFIG.discordChannelId} --message "$(cat ${tmpFile})"`, {
+        stdio: 'inherit',
+        shell: '/bin/bash'
+      });
+      
+      fs.unlinkSync(tmpFile);
+      console.log('✅ Discord notification sent');
+    } catch (e) {
+      console.error('❌ Failed to send Discord notification:', e.message);
+      console.log('\n' + message);
+    }
   }
 }
 
@@ -275,9 +291,10 @@ async function main() {
   console.log(`  - Total posts found: ${allPosts.length}`);
   console.log(`  - New unique posts: ${uniquePosts.length}`);
   
-  // Send Discord notification if we found new posts
+  // Update dashboard and send notification
+  updateDashboardAndNotify(uniquePosts, allPosts);
+  
   if (uniquePosts.length > 0) {
-    sendDiscordNotification(uniquePosts);
     saveSeenPosts(seenPosts);
     console.log(`\n💾 Saved ${uniquePosts.length} new post IDs.`);
   } else {
