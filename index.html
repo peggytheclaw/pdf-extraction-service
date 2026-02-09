@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Extraction & Data Parsing Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0066cc;
+        }
+
+        .hero {
+            background: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .calculator {
+            background: #f8f9fa;
+            border: 2px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 32px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .calculator h3 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #e1e4e8;
+            border-radius: 6px;
+            transition: border-color 0.2s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        .result {
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .result h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .result .price {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .result .period {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .feature {
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .feature ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .feature ul li {
+            padding: 6px 0;
+            color: #666;
+        }
+
+        .feature ul li:before {
+            content: "✓ ";
+            color: #0066cc;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .cta {
+            background: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            max-width: 500px;
+            margin: 0 auto 16px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #e1e4e8;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background: #0066cc;
+            color: white;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #0052a3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+        }
+
+        .pricing-note {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PDF Extraction & Data Parsing</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2>Transform Your PDFs Into Structured Data</h2>
+            <p>Automated extraction and parsing tailored to your needs. Simple, transparent pricing based on pages processed.</p>
+
+            <div class="calculator">
+                <h3>Calculate Your Monthly Cost</h3>
+                
+                <div class="input-group">
+                    <label for="pages">Pages processed per month</label>
+                    <input type="number" id="pages" value="1000" min="0" step="100">
+                </div>
+
+                <div class="result">
+                    <h4>Estimated Monthly Cost</h4>
+                    <div class="price">$<span id="cost">50</span></div>
+                    <div class="period">per month</div>
+                </div>
+
+                <div class="pricing-note">
+                    Pricing: $0.05 per page
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Custom Parsing, Zero Config</h3>
+                <p>Send us your input file and an example of the output you need. We'll build the extraction rules for you.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔄</div>
+                <h3>Flexible Input & Output</h3>
+                <p>We adapt to your workflow:</p>
+                <ul>
+                    <li>Email attachments</li>
+                    <li>Dropbox integration</li>
+                    <li>Direct API uploads</li>
+                    <li>Output to your API endpoint</li>
+                    <li>Structured files (JSON, CSV, Excel)</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Built for Scale</h3>
+                <p>From hundreds to millions of pages per month. Our infrastructure scales with your needs, delivering consistent performance.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <h3>Any PDF Format</h3>
+                <p>Invoices, receipts, reports, forms, or custom documents. If it's in a PDF, we can extract it accurately and reliably.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🤝</div>
+                <h3>Hands-Off Setup</h3>
+                <p>No need to learn rules or configure templates. Share your documents and desired output—we handle the rest.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Transparent Pricing</h3>
+                <p>Simple per-page pricing. No hidden fees, no surprise charges. Only pay for what you process.</p>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Ready to Get Started?</h2>
+            <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Tell us about your PDF extraction needs..." required></textarea>
+                </div>
+                <button type="submit">Get In Touch</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PDF Extraction Service. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Calculator
+        const pagesInput = document.getElementById('pages');
+        const costDisplay = document.getElementById('cost');
+        const pricePerPage = 0.05;
+
+        function updateCost() {
+            const pages = parseInt(pagesInput.value) || 0;
+            const cost = (pages * pricePerPage).toFixed(2);
+            costDisplay.textContent = cost;
+        }
+
+        pagesInput.addEventListener('input', updateCost);
+
+        // Form submission (placeholder - needs backend)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submission will be connected to backend. For now, please email: troycosentino@gmail.com');
+        });
+    </script>
+</body>
+</html>
