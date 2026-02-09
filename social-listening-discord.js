@@ -48,10 +48,17 @@ const CONFIG = {
     'i built',
     'i created',
     'i made',
+    'i developed',
+    'i ended up building',
+    'building a tool',
+    'built a small',
     'my startup',
     'we built',
     'launching',
-    'our product'
+    'our product',
+    'before i go any further',
+    'testing the market',
+    'gauging interest'
   ],
   platforms: {
     reddit: {
@@ -145,7 +152,12 @@ function calculateRelevance(post) {
   const questionMatches = CONFIG.questionIndicators.filter(q => text.includes(q)).length;
   score += questionMatches * 30;  // Even bigger boost for questions/problems
   
-  // Specific high-value phrases
+  // Genuine pain point phrases (MASSIVE boost - actual suffering customers!)
+  const painPoints = ['struggling', 'frustrated', 'wasting time', 'spending hours', 'hate doing', 'nightmare', 'drowning in', 'overwhelmed', 'killing me'];
+  const painMatches = painPoints.filter(p => text.includes(p)).length;
+  score += painMatches * 40;  // Huge boost for genuine pain
+  
+  // Specific high-value phrases in title
   if (title.includes('how do you')) score += 20;
   if (title.includes('looking for')) score += 15;
   if (title.includes('need help')) score += 15;
@@ -153,7 +165,9 @@ function calculateRelevance(post) {
   
   // Competitor/announcement patterns (PENALTY - not leads)
   const excludeMatches = CONFIG.excludePatterns.filter(p => text.includes(p)).length;
-  score -= excludeMatches * 50;  // Heavy penalty for announcements
+  if (excludeMatches > 0) {
+    return 0;  // Instant reject if competitor/seller patterns detected
+  }
   
   // Academic/general discussions (PENALTY)
   if (title.includes('history of') || title.includes('future of') || title.includes('why are there')) score -= 25;
@@ -195,7 +209,7 @@ async function searchReddit(subreddit) {
             platform: 'Reddit',
             subreddit: `r/${subreddit}`,
             title: p.title,
-            excerpt: (p.selftext || '').slice(0, 200),
+            excerpt: (p.selftext || '').slice(0, 500),  // Longer excerpt for better filtering
             url: `https://reddit.com${p.permalink}`,
             upvotes: p.ups,
             comments: p.num_comments,
@@ -236,7 +250,7 @@ async function searchHackerNews() {
             platform: 'Hacker News',
             subreddit: null,
             title: hit.title,
-            excerpt: (hit.story_text || hit.comment_text || '').slice(0, 200),
+            excerpt: (hit.story_text || hit.comment_text || '').slice(0, 500),  // Longer excerpt for better filtering
             url: `https://news.ycombinator.com/item?id=${hit.objectID}`,
             upvotes: hit.points,
             comments: hit.num_comments,
