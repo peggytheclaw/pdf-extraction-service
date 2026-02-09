@@ -83,7 +83,7 @@ const CONFIG = {
   discordChannelId: '1470518363942818002',
   seenPostsFile: path.join(__dirname, 'social-listening-seen.json'),
   dashboardFile: path.join(__dirname, 'social-listening-dashboard.json'),
-  daysToLookBack: 3,  // Look back 3 days for faster iteration
+  daysToLookBack: 7,  // Look back 7 days for more results
   minScore: 15  // Minimum relevance score to include (higher = better quality)
 };
 
