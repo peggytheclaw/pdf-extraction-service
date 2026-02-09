@@ -137,8 +137,19 @@
         }
 
         .feature-icon {
-            font-size: 32px;
+            width: 48px;
+            height: 48px;
             margin-bottom: 16px;
+        }
+        
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #0066cc;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .feature h3 {
@@ -284,13 +295,25 @@
 
         <section class="features">
             <div class="feature">
-                <div class="feature-icon">🎯</div>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                </div>
                 <h3>Custom Parsing, Zero Config</h3>
                 <p>Send us your input file and an example of the output you need. We'll build the extraction rules for you.</p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">🔄</div>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <polyline points="1 20 1 14 7 14"></polyline>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                </div>
                 <h3>Flexible Input & Output</h3>
                 <p>We adapt to your workflow:</p>
                 <ul>
@@ -303,25 +326,47 @@
             </div>
 
             <div class="feature">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
                 <h3>Built for Scale</h3>
                 <p>From hundreds to millions of pages per month. Our infrastructure scales with your needs, delivering consistent performance.</p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">🎨</div>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                </div>
                 <h3>Any PDF Format</h3>
                 <p>Invoices, receipts, reports, forms, or custom documents. If it's in a PDF, we can extract it accurately and reliably.</p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">🤝</div>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <path d="M23 11l-2-2-2 2"></path>
+                        <line x1="21" y1="13" x2="21" y2="9"></line>
+                    </svg>
+                </div>
                 <h3>Hands-Off Setup</h3>
                 <p>No need to learn rules or configure templates. Share your documents and desired output—we handle the rest.</p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">📊</div>
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="12" y1="20" x2="12" y2="10"></line>
+                        <line x1="18" y1="20" x2="18" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="16"></line>
+                    </svg>
+                </div>
                 <h3>Transparent Pricing</h3>
                 <p>Simple per-page pricing. No hidden fees, no surprise charges. Only pay for what you process.</p>
             </div>
