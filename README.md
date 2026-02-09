@@ -30,8 +30,23 @@ Can be deployed to:
 - Vercel
 - Any static hosting
 
+## Social Listening Tool
+
+Automated customer discovery tool that monitors online discussions about PDF automation problems.
+
+```bash
+# Run the social listening tool
+node social-listening.js
+
+# View the generated digest
+open social-listening-results/digest-YYYY-MM-DD.html
+```
+
+See [SOCIAL-LISTENING.md](SOCIAL-LISTENING.md) for full documentation.
+
 ## TODO
 
 - [ ] Connect contact form to backend (email notification)
 - [ ] Set up actual hosting
 - [ ] Add file upload capability for examples
+- [x] Build social listening tool for customer discovery

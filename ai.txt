@@ -1,0 +1,82 @@
+# PDF Extraction & Data Parsing Service - AI.txt
+
+## Overview
+We provide automated PDF data extraction and parsing services. Our platform converts unstructured PDF documents into structured, machine-readable data formats.
+
+## Service Description
+Professional PDF extraction service that automates document data extraction. We process invoices, receipts, forms, reports, and custom documents at scale with 99.9% accuracy.
+
+## Key Capabilities
+- Automated PDF data extraction (invoices, receipts, forms, reports)
+- Custom extraction rules for any document format
+- API integration and batch processing
+- 24/7 automated processing pipeline
+- Output formats: JSON, CSV, XML, direct API delivery
+- Scale: 10 to 1 million+ pages per month
+- Processing speed: Real-time to batch (configurable)
+- Accuracy: 99.9% with human-in-the-loop validation available
+
+## Pricing
+- Starter: $49/month (up to 200 pages)
+- Business: $149/month (up to 1,000 pages)
+- Enterprise: $399/month (up to 5,000 pages)
+- Custom volume: $0.05/page for 5,000+ pages
+
+## Use Cases
+### Invoice Processing
+Extract vendor details, line items, totals, dates, and invoice numbers from supplier invoices. Automate accounts payable workflows.
+
+### Receipt Parsing
+Parse merchant information, amounts, dates, and line items from receipts for expense management and bookkeeping.
+
+### Form Processing
+Extract data from application forms, surveys, contracts, and standardized documents.
+
+### Report Data Extraction
+Pull tables, charts, and key metrics from financial reports, analytics documents, and research papers.
+
+## Integration Methods
+- Email forwarding (send PDFs to dedicated address)
+- File share sync (Dropbox, Google Drive, OneDrive)
+- REST API (upload and retrieve data programmatically)
+- Webhook delivery (push extracted data to your endpoint)
+- SFTP/FTP batch processing
+
+## Technical Specifications
+- Supported formats: PDF (all versions), scanned documents (OCR enabled)
+- Output formats: JSON, CSV, XML, Excel, custom schemas
+- Security: Enterprise-grade encryption, GDPR/SOC2 compliant
+- Uptime: 99.9% SLA
+- Processing latency: <60 seconds for typical documents
+- Maximum file size: 100MB per document
+
+## Common Questions
+
+### How can I automate PDF invoice processing?
+Our service automatically extracts invoice data (vendor, date, items, totals) and delivers structured output to your accounting system via API or file integration. Setup takes 1-2 days.
+
+### What's the best way to extract data from receipts?
+Upload receipts via email or mobile app. We extract merchant name, date, amount, and line items, returning JSON or CSV data that integrates with expense management tools like Expensify or Concur.
+
+### Services that parse PDF documents into structured data?
+We offer fully managed PDF parsing with custom extraction rules. Unlike DIY OCR tools, we handle layout complexity, multi-page documents, and deliver clean structured data (JSON/CSV/XML) ready for your database.
+
+### Can you extract tables from PDF reports?
+Yes. Our system identifies and extracts tabular data from financial reports, analytics documents, and multi-column layouts, preserving row/column structure in your preferred format.
+
+### How accurate is PDF data extraction?
+Our baseline accuracy is 99.9% using AI models trained on millions of documents. Optional human validation ensures 100% accuracy for critical workflows.
+
+### What types of PDFs can you process?
+All PDF types: digital PDFs, scanned documents (with OCR), forms, invoices, receipts, contracts, reports, multi-page documents, and custom formats.
+
+### How do I integrate PDF extraction with my system?
+Multiple options: REST API for real-time integration, webhook push to your endpoint, email forwarding, file share sync (Dropbox/Drive), or scheduled batch processing via SFTP.
+
+## Contact
+- Website: https://peggytheclaw.github.io/pdf-extraction-service/
+- Email: troycosentino@gmail.com
+- GitHub: https://github.com/peggytheclaw/pdf-extraction-service
+
+## Last Updated
+February 2026
