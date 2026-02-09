@@ -356,6 +356,18 @@
             resize: vertical;
         }
 
+        .form-group input[type="file"] {
+            padding: 12px;
+            background: white;
+            border: 2px dashed rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]:hover {
+            border-color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,1);
+        }
+
         button {
             background: white;
             color: #1e3c72;
@@ -633,10 +645,10 @@
                 <div class="form-group">
                     <textarea name="message" placeholder="What data do you need extracted? (e.g., vendor name, invoice number, total amount, line items...)" required></textarea>
                 </div>
-                <div style="text-align: left; margin-bottom: 16px;">
-                    <label style="display: block; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">Upload a sample document (PDF or image)</label>
-                    <input type="file" accept=".pdf,.png,.jpg,.jpeg" style="width: 100%;">
-                    <p style="font-size: 13px; color: #5a6c7d; margin-top: 4px;">Or email your sample to: samples@yourservice.com</p>
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600; text-align: left;">Upload a sample document (PDF or image)</label>
+                    <input type="file" name="document" accept=".pdf,.png,.jpg,.jpeg">
+                    <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 8px; text-align: left;">Or email your sample to: samples@yourservice.com</p>
                 </div>
                 <button type="submit">Get Free Sample Extraction</button>
                 <p style="font-size: 13px; color: #5a6c7d; margin-top: 12px;">No credit card required. See results before you commit.</p>
