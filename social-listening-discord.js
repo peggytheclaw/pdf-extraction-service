@@ -215,6 +215,13 @@ function updateDashboardAndNotify(newPosts, allPosts) {
   try {
     fs.writeFileSync(CONFIG.dashboardFile, JSON.stringify(dashboardData, null, 2));
     console.log('✅ Dashboard updated');
+    
+    // Generate standalone version
+    try {
+      execSync('node generate-dashboard.js', { cwd: __dirname, stdio: 'inherit' });
+    } catch (e) {
+      console.error('⚠️  Failed to generate standalone dashboard:', e.message);
+    }
   } catch (e) {
     console.error('❌ Failed to update dashboard:', e.message);
   }
@@ -226,9 +233,9 @@ function updateDashboardAndNotify(newPosts, allPosts) {
 
 Found **${newPosts.length}** new discussion${newPosts.length === 1 ? '' : 's'}!${highValue > 0 ? ` (${highValue} high-value)` : ''}
 
-📊 View dashboard: file://${path.join(__dirname, 'dashboard.html')}
+📊 Open dashboard: \`open ~/repos/pdf-extraction-service/dashboard-standalone.html\`
 
-Auto-refreshes every 2 minutes.`;
+(Auto-updated every 30 mins)`;
     
     try {
       const tmpFile = `/tmp/social-listening-msg-${Date.now()}.txt`;
