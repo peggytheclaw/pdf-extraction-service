@@ -52,11 +52,16 @@
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            gap: 40px;
             padding: 0 20px;
+        }
+
+        .hero-left,
+        .calculator {
+            flex: 1;
         }
 
         .hero-left h2 {
