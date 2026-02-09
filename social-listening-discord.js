@@ -14,18 +14,60 @@ const { execSync } = require('child_process');
 
 // Configuration
 const CONFIG = {
+  // Mix of specific pain points + broader terms
   keywords: [
-    'PDF extraction',
-    'invoice parsing',
+    'invoice data entry',
+    'PDF invoice',
+    'receipt scanning',
+    'manual data entry',
+    'PDF to Excel',
+    'invoice processing',
+    'extract invoice data',
     'PDF automation',
-    'data entry from PDFs',
-    'receipt processing',
-    'manual data entry PDF'
+    'invoice OCR',
+    'receipt management'
+  ],
+  // Question indicators (boost relevance)
+  questionIndicators: [
+    'how do i',
+    'how can i',
+    'what\'s the best way',
+    'need help',
+    'looking for',
+    'anyone know',
+    'struggling with',
+    'tired of',
+    'spent hours',
+    'recommendations for',
+    'does anyone have',
+    'best tool for'
+  ],
+  // Competitor/announcement patterns (reduce relevance)
+  excludePatterns: [
+    'show hn:',
+    'i built',
+    'i created',
+    'i made',
+    'my startup',
+    'we built',
+    'launching',
+    'our product'
   ],
   platforms: {
     reddit: {
       enabled: true,
-      subreddits: ['entrepreneur', 'smallbusiness', 'accounting', 'bookkeeping']
+      subreddits: [
+        'entrepreneur',
+        'smallbusiness',
+        'accounting',
+        'bookkeeping',
+        'freelance',
+        'consulting',
+        'Invoices',
+        'ReceiptOrganizing',
+        'productivity',
+        'automation'
+      ]
     },
     hackernews: {
       enabled: true
@@ -34,7 +76,8 @@ const CONFIG = {
   discordChannelId: '1470518363942818002',
   seenPostsFile: path.join(__dirname, 'social-listening-seen.json'),
   dashboardFile: path.join(__dirname, 'social-listening-dashboard.json'),
-  daysToLookBack: 1  // Only check last 24h for faster runs
+  daysToLookBack: 3,  // Look back 3 days for faster iteration
+  minScore: 15  // Minimum relevance score to include (higher = better quality)
 };
 
 // Utility: Make HTTPS request
@@ -81,25 +124,53 @@ function matchesKeywords(text) {
   return CONFIG.keywords.some(keyword => lowerText.includes(keyword.toLowerCase()));
 }
 
-// Calculate relevance score
+// Calculate relevance score (lead quality)
 function calculateRelevance(post) {
   let score = 0;
   const text = `${post.title} ${post.excerpt || ''}`.toLowerCase();
+  const title = post.title.toLowerCase();
   
-  // Keyword density
+  // Core keywords in TITLE (must have invoice/receipt/PDF to be relevant)
+  const coreKeywords = ['invoice', 'receipt', 'pdf', 'data entry'];
+  const hasCoreInTitle = coreKeywords.some(k => title.includes(k));
+  if (!hasCoreInTitle) {
+    score -= 30;  // Heavy penalty if missing core terms in title
+  }
+  
+  // Keyword matches (base relevance)
   const keywordMatches = CONFIG.keywords.filter(k => text.includes(k.toLowerCase())).length;
   score += keywordMatches * 15;
   
-  // Engagement
-  score += Math.min(post.upvotes || post.points || 0, 50);
-  score += Math.min((post.comments || 0) * 2, 30);
+  // Question/pain-point indicators (MAJOR boost - these are potential customers)
+  const questionMatches = CONFIG.questionIndicators.filter(q => text.includes(q)).length;
+  score += questionMatches * 30;  // Even bigger boost for questions/problems
   
-  // Recency (prefer recent posts)
+  // Specific high-value phrases
+  if (title.includes('how do you')) score += 20;
+  if (title.includes('looking for')) score += 15;
+  if (title.includes('need help')) score += 15;
+  if (title.includes('manual') && hasCoreInTitle) score += 10;
+  
+  // Competitor/announcement patterns (PENALTY - not leads)
+  const excludeMatches = CONFIG.excludePatterns.filter(p => text.includes(p)).length;
+  score -= excludeMatches * 50;  // Heavy penalty for announcements
+  
+  // Academic/general discussions (PENALTY)
+  if (title.includes('history of') || title.includes('future of') || title.includes('why are there')) score -= 25;
+  if (title.includes('ask hn:') && !hasCoreInTitle) score -= 20;
+  
+  // Engagement (active discussion = more people with same problem)
+  score += Math.min(post.upvotes || post.points || 0, 25);
+  score += Math.min((post.comments || 0) * 3, 35);  // More weight on comments
+  
+  // Recency (prefer recent posts for timely engagement)
   const hoursAgo = post.hoursAgo || 24;
-  if (hoursAgo < 2) score += 20;
-  else if (hoursAgo < 12) score += 10;
+  if (hoursAgo < 6) score += 15;
+  else if (hoursAgo < 24) score += 10;
+  else if (hoursAgo < 72) score += 5;
   
-  return Math.min(score, 100);
+  // Ensure score is in valid range
+  return Math.max(0, Math.min(score, 100));
 }
 
 // Reddit search
@@ -119,7 +190,7 @@ async function searchReddit(subreddit) {
         const text = `${p.title} ${p.selftext || ''}`;
         if (matchesKeywords(text)) {
           const hoursAgo = (Date.now() / 1000 - p.created_utc) / 3600;
-          results.push({
+          const post = {
             id: `reddit-${p.id}`,
             platform: 'Reddit',
             subreddit: `r/${subreddit}`,
@@ -130,7 +201,12 @@ async function searchReddit(subreddit) {
             comments: p.num_comments,
             hoursAgo: Math.round(hoursAgo),
             timestamp: p.created_utc
-          });
+          };
+          
+          // Only include if it meets minimum quality threshold
+          if (calculateRelevance(post) >= CONFIG.minScore) {
+            results.push(post);
+          }
         }
       }
     }
@@ -155,7 +231,7 @@ async function searchHackerNews() {
       if (data.hits) {
         for (const hit of data.hits) {
           const hoursAgo = (Date.now() / 1000 - hit.created_at_i) / 3600;
-          results.push({
+          const post = {
             id: `hn-${hit.objectID}`,
             platform: 'Hacker News',
             subreddit: null,
@@ -166,7 +242,12 @@ async function searchHackerNews() {
             comments: hit.num_comments,
             hoursAgo: Math.round(hoursAgo),
             timestamp: hit.created_at_i
-          });
+          };
+          
+          // Only include if it meets minimum quality threshold
+          if (calculateRelevance(post) >= CONFIG.minScore) {
+            results.push(post);
+          }
         }
       }
       
