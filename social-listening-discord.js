@@ -130,11 +130,11 @@ function calculateRelevance(post) {
   const text = `${post.title} ${post.excerpt || ''}`.toLowerCase();
   const title = post.title.toLowerCase();
   
-  // Core keywords in TITLE (must have invoice/receipt/PDF to be relevant)
-  const coreKeywords = ['invoice', 'receipt', 'pdf', 'data entry'];
+  // Core keywords in TITLE (must have invoice/receipt/PDF/data to be relevant)
+  const coreKeywords = ['invoice', 'receipt', 'pdf', 'data entry', 'manual data'];
   const hasCoreInTitle = coreKeywords.some(k => title.includes(k));
   if (!hasCoreInTitle) {
-    score -= 30;  // Heavy penalty if missing core terms in title
+    return 0;  // Reject completely if no core terms in title
   }
   
   // Keyword matches (base relevance)

@@ -1,70 +1,18 @@
 {
   "posts": [
     {
-      "id": "hn-46950654",
-      "platform": "Hacker News",
-      "subreddit": null,
-      "title": "Show HN: PaperPod – Fast, no-setup sandboxes for AI agents",
-      "excerpt": "Hi HN, we built PaperPod: agent-native sandboxes for code execution, live URLs, browser automation, LLM inference, persistent memory, with 50+ built-in tools (ffmpeg, sqlite, etc.) - all via our CLI t",
-      "url": "https://news.ycombinator.com/item?id=46950654",
-      "upvotes": 1,
-      "comments": 1,
+      "id": "reddit-1r0gadg",
+      "platform": "Reddit",
+      "subreddit": "r/smallbusiness",
+      "title": "How do you handle large numbers of PDF invoices each month?",
+      "excerpt": "I used to manually rename and sort hundreds of PDF invoices every month\n\nfor a small business, and it was taking way too much time.\n\n\n\nI tried folders, naming conventions, even scripts, but none of it",
+      "url": "https://reddit.com/r/smallbusiness/comments/1r0gadg/how_do_you_handle_large_numbers_of_pdf_invoices/",
+      "upvotes": 0,
+      "comments": 5,
       "hoursAgo": 1,
-      "timestamp": 1770668567,
-      "score": 23
-    },
-    {
-      "id": "hn-46943969",
-      "platform": "Hacker News",
-      "subreddit": null,
-      "title": "Show HN: I built an invoicing SaaS with AI-generated invoice templates",
-      "excerpt": "Hey HN,<p>I&#x27;m a solo dev and I built Invocrea because I was tired of spending hours every month on invoicing. Most tools out there are bloated, expensive, or just ugly.<p><pre><code>  Invocrea le",
-      "url": "https://news.ycombinator.com/item?id=46943969",
-      "upvotes": 1,
-      "comments": 0,
-      "hoursAgo": 10,
-      "timestamp": 1770635367,
-      "score": 11
-    },
-    {
-      "id": "hn-46942091",
-      "platform": "Hacker News",
-      "subreddit": null,
-      "title": "Show HN: Give Your AI the Ability to Find, Install, and Use Skill Autonomously",
-      "excerpt": "URL: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;twwch&#x2F;next-chat-skills\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;twwch&#x2F;next-chat-skills</a><p>---<p>Text (paste into the &quot;text&qu",
-      "url": "https://news.ycombinator.com/item?id=46942091",
-      "upvotes": 2,
-      "comments": 0,
-      "hoursAgo": 15,
-      "timestamp": 1770617602,
-      "score": 2
-    },
-    {
-      "id": "hn-46939518",
-      "platform": "Hacker News",
-      "subreddit": null,
-      "title": "Ask HN: Vibe Studying?",
-      "excerpt": "I was reading the papers listed at https:&#x2F;&#x2F;www.cs.princeton.edu&#x2F;courses&#x2F;archive&#x2F;fall22&#x2F;cos597G&#x2F; to learn about LLMs. My background’s in physics, not ml&#x2F;cs, so w",
-      "url": "https://news.ycombinator.com/item?id=46939518",
-      "upvotes": 1,
-      "comments": 0,
-      "hoursAgo": 22,
-      "timestamp": 1770591806,
-      "score": 1
-    },
-    {
-      "id": "hn-46939050",
-      "platform": "Hacker News",
-      "subreddit": null,
-      "title": "Show HN: EasyMemory – Local-First Memory Layer for Chatbots and Agents",
-      "excerpt": "Hi everyone,<p>I built EasyMemory, an open-source Python library that provides a fully local-first memory layer for chatbots and agent-based systems, with no cloud dependency.<p>Most existing agent me",
-      "url": "https://news.ycombinator.com/item?id=46939050",
-      "upvotes": 1,
-      "comments": 0,
-      "hoursAgo": 23,
-      "timestamp": 1770588469,
-      "score": 1
+      "timestamp": 1770670546,
+      "score": 65
     }
   ],
-  "lastUpdated": "2026-02-09T21:33:15.593Z"
+  "lastUpdated": "2026-02-09T21:46:42.475Z"
 }
