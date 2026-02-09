@@ -407,7 +407,39 @@
             <div class="hero-content">
                 <div class="hero-left">
                     <h2>Turn PDFs Into Actionable Data</h2>
-                    <p>Stop manually copying data from PDFs. Our service extracts, parses, and delivers structured data directly to your systems—automatically.</p>
+                    <p style="margin-bottom: 24px;">Stop manually copying data from PDFs. Our service extracts, parses, and delivers structured data directly to your systems—automatically.</p>
+                    
+                    <h3 style="font-size: 20px; margin-bottom: 16px; color: #1e3c72; font-weight: 600;">Simple Pricing</h3>
+                    
+                    <div style="display: grid; gap: 12px;">
+                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Starter</div>
+                                <div style="font-size: 14px; color: #5a6c7d;">Up to 200 pages/month</div>
+                            </div>
+                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$49</div>
+                        </div>
+                        
+                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Business</div>
+                                <div style="font-size: 14px; color: #5a6c7d;">Up to 1,000 pages/month</div>
+                            </div>
+                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$149</div>
+                        </div>
+                        
+                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Enterprise</div>
+                                <div style="font-size: 14px; color: #5a6c7d;">Up to 5,000 pages/month</div>
+                            </div>
+                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$399</div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; color: #5a6c7d; font-size: 13px; margin-top: 12px;">
+                        Custom volumes over 5,000 pages at $0.05/page
+                    </div>
                 </div>
 
                 <div class="calculator">
@@ -429,7 +461,7 @@
                         </div>
                     </div>
 
-                    <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 16px; border: 2px solid #e1e8ed;">
+                    <div style="background: white; padding: 24px; border-radius: 12px; border: 2px solid #e1e8ed;">
                         <div style="text-align: center; color: #5a6c7d; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
                             TIME SAVED PER MONTH
                         </div>
@@ -439,19 +471,9 @@
                         <div style="text-align: center; color: #2a5298; font-size: 20px; font-weight: 600; margin-top: 8px;">
                             ≈ <span id="costSaved">$332</span> in labor saved*
                         </div>
-                    </div>
-
-                    <div style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 24px; border-radius: 12px; color: white;">
-                        <div style="text-align: center; font-size: 14px; font-weight: 600; margin-bottom: 8px; opacity: 0.9;">
-                            YOUR MONTHLY COST
+                        <div style="text-align: center; color: #5a6c7d; font-size: 12px; margin-top: 12px;">
+                            *Based on $40/hour labor cost
                         </div>
-                        <div style="text-align: center; font-size: 48px; font-weight: 700;">
-                            $<span id="serviceCost">49</span>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; color: #5a6c7d; font-size: 12px; margin-top: 12px;">
-                        *Based on $40/hour labor cost
                     </div>
                 </div>
             </div>
@@ -616,7 +638,6 @@
         const pdfsDisplay = document.getElementById('pdfsDisplay');
         const hoursSavedDisplay = document.getElementById('hoursSaved');
         const costSavedDisplay = document.getElementById('costSaved');
-        const serviceCostDisplay = document.getElementById('serviceCost');
 
         function updateCalculations() {
             const minutes = parseInt(minutesSlider.value);
@@ -634,23 +655,6 @@
             // Calculate cost saved (assuming $40/hour labor)
             const laborCostSaved = Math.round(hours * 40);
             costSavedDisplay.textContent = `$${laborCostSaved}`;
-
-            // Calculate service cost based on volume
-            // Assuming average 2 pages per PDF for simplicity
-            const estimatedPages = pdfs * 2;
-            let serviceCost;
-
-            if (estimatedPages <= 200) {
-                serviceCost = 49;
-            } else if (estimatedPages <= 1000) {
-                serviceCost = 149;
-            } else if (estimatedPages <= 5000) {
-                serviceCost = 399;
-            } else {
-                serviceCost = Math.ceil(estimatedPages * 0.05);
-            }
-
-            serviceCostDisplay.textContent = serviceCost;
         }
 
         minutesSlider.addEventListener('input', updateCalculations);
