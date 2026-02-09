@@ -1,571 +1,557 @@
-# Tracking System - PDF Extraction Service
+# 📊 Tracking System - Operations Management
 
-## Overview
-
-This document defines the complete tracking system for managing leads, outreach, samples, and conversions for the PDF extraction service.
-
-**System**: Google Sheets (shareable, accessible anywhere, easy automation)
-**Owner**: Peggy (AI Assistant)
-**Access**: Troy (view/edit), Peggy (edit)
+**How Peggy will track everything and keep you updated**
 
 ---
 
-## Sheet Structure
+## 🎯 OVERVIEW
 
-### Master Workbook: "PDF_Extraction_Sales_Tracker"
+**Goal:** Know the status of every lead, sample, and customer at all times
 
-**Contains 5 tabs:**
-1. **Leads** - Master lead list with all contact info
-2. **Outreach** - Email tracking (sent, opened, replied)
-3. **Samples** - Sample requests and delivery tracking
-4. **Customers** - Active customers and revenue
-5. **Metrics** - Dashboard with KPIs and charts
+**Tools:**
+- Google Sheets (main tracking)
+- Discord (notifications)
+- GitHub (documentation backups)
+
+**Stakeholders:**
+- Troy: Owner, can view/edit everything
+- Peggy: Automated updates, daily management
 
 ---
 
-## TAB 1: Leads
+## 📋 GOOGLE SHEETS STRUCTURE
 
-### Purpose
-Master database of all potential customers with qualification and status.
+### Tab 1: LEADS
 
-### Columns
+**Purpose:** Track all cold outreach prospects
 
-| Column | Description | Format | Example |
-|--------|-------------|--------|---------|
-| Lead ID | Unique identifier | L-XXXX | L-0001 |
-| Date Added | When lead was added | YYYY-MM-DD | 2026-02-09 |
-| Name | Contact's full name | Text | John Smith |
-| Company | Business name | Text | ABC Supply Co |
-| Role | Job title | Text | Owner / CEO |
-| Email | Primary email | Email | john@abcsupply.com |
-| LinkedIn | Profile URL | URL | linkedin.com/in/johnsmith |
-| Phone | Phone number (optional) | Text | +1-555-0123 |
-| Source | Where found | Dropdown | Reddit / LinkedIn / Facebook |
-| Source Detail | Specific source | Text | r/FulfillmentByAmazon post |
-| Platform | Ecommerce platform | Dropdown | Amazon FBA / Shopify / Multi |
-| Est. Revenue | Annual revenue estimate | Dropdown | $100K-$500K / $500K-$2M / $2M+ |
-| Est. Invoice Volume | Invoices per month | Number | 45 |
-| Pain Point | Specific challenge mentioned | Text | "drowning in invoice paperwork" |
-| Accounting System | Current software | Dropdown | QuickBooks / Xero / None |
-| Lead Score | Qualification score (1-10) | Number | 8 |
-| Status | Current stage | Dropdown | New / Contacted / Sample / Customer |
-| Priority | Outreach priority | Dropdown | High / Medium / Low |
-| Notes | Additional context | Text | Posts frequently about scaling |
-| Tags | Keywords for filtering | Text | high-volume, growing, QB-user |
-| Last Activity | Last interaction date | YYYY-MM-DD | 2026-02-09 |
-| Next Action | What to do next | Text | Send initial email |
-| Assigned To | Who's handling | Dropdown | Peggy / Troy |
-
-### Lead Scoring Formula
-
-**Total Score (1-10):**
-
+**Columns:**
 ```
-Base Score = 
-+ Volume Score (1-4 points)
-  • 50+ invoices/month = 4
-  • 30-49 invoices/month = 3
-  • 15-29 invoices/month = 2
-  • <15 invoices/month = 1
-
-+ System Score (1-3 points)
-  • Using QuickBooks/Xero = 3
-  • Using spreadsheets = 2
-  • No system yet = 1
-
-+ Engagement Score (1-3 points)
-  • Mentioned pain point directly = 3
-  • Active in communities discussing issue = 2
-  • Passive (just found them) = 1
-
-Total = Volume + System + Engagement (max 10)
+A: Date Added (auto)
+B: Name (first/full)
+C: Email (verified)
+D: Company/Store
+E: Source (Reddit/LinkedIn/Forum/etc.)
+F: Segment (Amazon/Shopify/Bookkeeper/Contractor)
+G: Status (NEW → CONTACTED → REPLIED → SAMPLE_SENT → CONVERTED → LOST)
+H: Last Contact Date
+I: Follow-Up Due (auto: last contact + 3 days)
+J: Notes (personalization, context)
+K: Reply Text (what they said)
 ```
 
-**Priority Assignment:**
-- Score 8-10 = High Priority
-- Score 5-7 = Medium Priority
-- Score 1-4 = Low Priority
-
-### Status Values
-
-| Status | Definition | Next Action |
-|--------|------------|-------------|
-| New | Just added, not contacted | Send initial email |
-| Contacted | Initial email sent, awaiting response | Follow up in 3 days |
-| Replied | They responded (interested or questions) | Continue conversation |
-| Sample Requested | Asked for sample | Process sample ASAP |
-| Sample Sent | Sample delivered | Follow up in 2-3 days |
-| Negotiating | Discussing pricing/terms | Close the deal |
-| Customer | Paying customer | Move to Customers tab |
-| Not Interested | Explicitly declined | Mark inactive |
-| No Response | No reply after 3 follow-ups | Re-engage in 30 days |
-| Bad Contact | Email bounced or wrong person | Find correct contact |
-
-### Automation Rules (Peggy's Jobs)
-
-**Daily:**
-- [ ] Add 5-10 new qualified leads
-- [ ] Update "Last Activity" for any interactions
-- [ ] Move customers from Leads to Customers tab
-- [ ] Flag leads ready for follow-up (based on days since last contact)
-
-**Weekly:**
-- [ ] Review lead scores (update based on new info)
-- [ ] Clean up duplicate entries
-- [ ] Verify email addresses for new leads
-- [ ] Update "Next Action" for all active leads
-
----
-
-## TAB 2: Outreach
-
-### Purpose
-Track every email sent, responses received, and outreach performance.
-
-### Columns
-
-| Column | Description | Format | Example |
-|--------|-------------|--------|---------|
-| Outreach ID | Unique identifier | O-XXXX | O-0001 |
-| Lead ID | Links to Leads tab | L-XXXX | L-0001 |
-| Name | Contact name | Text | John Smith |
-| Email | Email address | Email | john@abcsupply.com |
-| Date Sent | When email was sent | YYYY-MM-DD | 2026-02-09 |
-| Email Type | Template used | Dropdown | Initial / Follow-up 1 / Follow-up 2 / Sample |
-| Subject Line | Email subject | Text | "Saw your post about invoices" |
-| Template Used | Which template | Text | Reddit Template A |
-| Personalization | Key personalized element | Text | Referenced Reddit post from Jan 15 |
-| Sent By | Who sent it | Dropdown | Peggy / Troy |
-| Status | Email status | Dropdown | Sent / Opened / Replied / Bounced |
-| Date Opened | First open timestamp | YYYY-MM-DD HH:MM | 2026-02-09 08:34 |
-| Date Replied | Reply timestamp | YYYY-MM-DD HH:MM | 2026-02-09 14:22 |
-| Reply Type | Type of response | Dropdown | Positive / Negative / Question / Sample Request |
-| Reply Summary | Brief summary | Text | "Interested, wants pricing info" |
-| Next Follow-up Date | When to follow up | YYYY-MM-DD | 2026-02-12 |
-| Conversion | Did they convert? | Checkbox | ☑ |
-| Notes | Additional details | Text | Mentioned timing is tight right now |
-
-### Email Tracking Integration
-
-**Options:**
-1. **Manual tracking**: Peggy updates when sending/receiving emails
-2. **Gmail labels**: Auto-tag emails and sync to sheet
-3. **Email tracking tool**: Use Mailtrack, HubSpot, or similar (if budget allows)
-
-**Recommended for MVP**: Manual tracking by Peggy (most reliable for now)
-
-### Performance Metrics (Calculated)
-
-**Email Performance Summary** (update weekly):
-
+**Status Flow:**
 ```
-Total Emails Sent: COUNT(Status = "Sent")
-Open Rate: Opens / Sent
-Reply Rate: Replies / Sent
-Sample Request Rate: (Reply Type = "Sample Request") / Sent
-Bounce Rate: Bounces / Sent
-
-By Template:
-- Initial Contact: [X] sent, [Y]% opened, [Z]% replied
-- Follow-up 1: [X] sent, [Y]% opened, [Z]% replied
-- Follow-up 2: [X] sent, [Y]% opened, [Z]% replied
+NEW (added to list, not contacted)
+  ↓
+CONTACTED (initial email sent)
+  ↓
+REPLIED (they responded)
+  ↓
+SAMPLE_SENT (delivered free extraction)
+  ↓
+CONVERTED (became paying customer) ✅
+OR
+LOST (not interested / no response after 3 emails) ❌
 ```
 
-### Automation Rules (Peggy's Jobs)
+**Automation:**
+- Peggy updates status after each action
+- Follow-up due dates calculated automatically
+- Conditional formatting: RED if overdue, YELLOW if due today
 
-**Daily:**
-- [ ] Log all emails sent
-- [ ] Update status for opens/replies
-- [ ] Flag leads ready for next follow-up
-- [ ] Respond to questions within 24 hours
-
-**Weekly:**
-- [ ] Calculate performance metrics
-- [ ] Identify top-performing templates
-- [ ] Adjust templates if metrics are below target
+**Weekly Cleanup:**
+- Archive LOST leads after 30 days
+- Move CONVERTED leads to CUSTOMERS tab
 
 ---
 
-## TAB 3: Samples
+### Tab 2: SAMPLES
 
-### Purpose
-Track sample processing from request to delivery and conversion.
+**Purpose:** Track free sample extractions (pre-sale)
 
-### Columns
-
-| Column | Description | Format | Example |
-|--------|-------------|--------|---------|
-| Sample ID | Unique identifier | S-XXXX | S-0001 |
-| Lead ID | Links to Leads tab | L-XXXX | L-0001 |
-| Name | Contact name | Text | John Smith |
-| Company | Business name | Text | ABC Supply Co |
-| Date Requested | When they asked | YYYY-MM-DD | 2026-02-09 |
-| Request Source | How they requested | Dropdown | Email Reply / Direct Inquiry |
-| Invoices Received | How many PDFs sent | Number | 5 |
-| Date Received | When PDFs arrived | YYYY-MM-DD | 2026-02-09 |
-| Processing Status | Current stage | Dropdown | Pending / In Progress / Complete |
-| Date Started | When processing began | YYYY-MM-DD HH:MM | 2026-02-09 10:00 |
-| Date Completed | When finished | YYYY-MM-DD HH:MM | 2026-02-09 11:23 |
-| Processing Time | Minutes spent | Number (auto-calc) | 83 |
-| Line Items Extracted | Total data points | Number | 127 |
-| Issues Found | Any problems detected | Text | Duplicate entry on inv #4521 |
-| Quality Score | Extraction quality (1-10) | Number | 9 |
-| Date Delivered | When sent to customer | YYYY-MM-DD | 2026-02-09 |
-| Delivery Format | File type sent | Dropdown | Excel / CSV / PDF |
-| Customer Feedback | Their response | Text | "Looks great, exactly what I need!" |
-| Satisfaction Rating | Their rating (1-5) | Number | 5 |
-| Follow-up Sent | Sent conversion email | Checkbox | ☑ |
-| Converted to Customer | Did they buy? | Checkbox | ☐ |
-| Days to Conversion | Time from sample to sale | Number (auto-calc) | - |
-| Conversion Value | First payment amount | Currency | - |
-| Notes | Additional details | Text | Fast turnaround impressed them |
-
-### Sample Processing Workflow Checklist
-
-For each sample request:
-
-1. **Receive Request** (within 1 hour):
-   - [ ] Log in Samples tab
-   - [ ] Send upload link to customer
-   - [ ] Set expected turnaround time
-
-2. **Receive Invoices** (same day):
-   - [ ] Download all PDFs
-   - [ ] Log count in "Invoices Received"
-   - [ ] Update status to "In Progress"
-
-3. **Process Invoices** (within 24 hours):
-   - [ ] Extract data (see EXTRACTION_WORKFLOW.md)
-   - [ ] QA check all data
-   - [ ] Format for their accounting system
-   - [ ] Flag any issues found
-   - [ ] Update processing time
-
-4. **Deliver Results** (immediately after processing):
-   - [ ] Email results with summary
-   - [ ] Include time comparison
-   - [ ] Highlight any issues caught
-   - [ ] Update status to "Complete"
-
-5. **Follow Up** (2-3 days later):
-   - [ ] Send conversion email (Email Template #5)
-   - [ ] Ask for feedback
-   - [ ] Answer any questions
-
-### Automation Rules (Peggy's Jobs)
-
-**Immediately upon sample request:**
-- [ ] Create entry in Samples tab
-- [ ] Send upload link to customer
-- [ ] Alert Troy if this is high-priority lead
-
-**Within 24 hours of receiving invoices:**
-- [ ] Complete processing
-- [ ] Deliver results
-- [ ] Log all metrics
-
-**2-3 days after delivery:**
-- [ ] Send conversion follow-up
-- [ ] Update conversion status
-
----
-
-## TAB 4: Customers
-
-### Purpose
-Track active customers, revenue, retention, and satisfaction.
-
-### Columns
-
-| Column | Description | Format | Example |
-|--------|-------------|--------|---------|
-| Customer ID | Unique identifier | C-XXXX | C-0001 |
-| Lead ID | Original lead ID | L-XXXX | L-0001 |
-| Name | Contact name | Text | John Smith |
-| Company | Business name | Text | ABC Supply Co |
-| Email | Primary email | Email | john@abcsupply.com |
-| Date Acquired | Became customer | YYYY-MM-DD | 2026-02-15 |
-| Plan Type | Subscription level | Dropdown | Monthly Unlimited / Pay-Per-Batch |
-| Monthly Fee | Recurring charge | Currency | $179.00 |
-| Billing Cycle | Payment frequency | Dropdown | Monthly / Per Batch |
-| Payment Method | How they pay | Dropdown | Credit Card / Invoice / PayPal |
-| Total Revenue | Lifetime value | Currency (auto-calc) | $358.00 |
-| Months Active | Retention period | Number (auto-calc) | 2 |
-| Avg Invoices/Month | Volume processed | Number | 42 |
-| Total Invoices Processed | All-time count | Number | 84 |
-| Last Processing Date | Most recent job | YYYY-MM-DD | 2026-02-09 |
-| Satisfaction Score | Overall rating (1-5) | Number | 5 |
-| Status | Account status | Dropdown | Active / Paused / Churned |
-| Renewal Date | Next billing | YYYY-MM-DD | 2026-03-15 |
-| At-Risk Flag | Churn indicators | Checkbox | ☐ |
-| At-Risk Reason | Why flagged | Text | - |
-| Support Tickets | Issues reported | Number | 0 |
-| Referrals Given | New customers referred | Number | 1 |
-| Notes | Important details | Text | Very happy, referred friend |
-
-### Customer Health Indicators
-
-**Green (Healthy):**
-- ✅ Active for 3+ months
-- ✅ Consistent monthly volume
-- ✅ No support issues
-- ✅ Responds to check-ins positively
-- ✅ Provided testimonial or referral
-
-**Yellow (At-Risk):**
-- ⚠️ Volume decreased 30%+ in last month
-- ⚠️ Late payment (first time)
-- ⚠️ Multiple support tickets
-- ⚠️ Mentioned budget concerns
-- ⚠️ Slow to provide invoices
-
-**Red (High Churn Risk):**
-- 🚨 No activity for 30+ days
-- 🚨 Payment failed
-- 🚨 Explicitly mentioned canceling
-- 🚨 Quality complaints
-- 🚨 Found competitor
-
-### Automation Rules (Peggy's Jobs)
-
-**Weekly:**
-- [ ] Update "Last Processing Date" for all customers
-- [ ] Calculate avg invoices/month
-- [ ] Flag at-risk customers (based on indicators above)
-- [ ] Calculate total revenue and months active
-
-**Monthly:**
-- [ ] Send satisfaction survey to customers 30+ days
-- [ ] Check in with at-risk customers
-- [ ] Request testimonials from happy customers (5-star)
-- [ ] Update renewal dates
-
-**Quarterly:**
-- [ ] Review customer health scores
-- [ ] Identify upsell opportunities (pay-per-batch → monthly)
-- [ ] Calculate retention rate
-- [ ] Analyze churn reasons
-
----
-
-## TAB 5: Metrics Dashboard
-
-### Purpose
-Visual dashboard showing KPIs and trends at a glance.
-
-### Key Metrics
-
-**Lead Generation:**
-- Total Leads: [COUNT from Leads tab]
-- Leads Added This Week: [COUNT where Date Added = last 7 days]
-- Leads by Source: [PIE CHART - Reddit, LinkedIn, Facebook, etc.]
-- Leads by Priority: [PIE CHART - High, Medium, Low]
-- Average Lead Score: [AVERAGE of Lead Score]
-
-**Outreach Performance:**
-- Total Emails Sent: [COUNT from Outreach tab]
-- Open Rate: [Opens / Sent]
-- Reply Rate: [Replies / Sent]
-- Sample Request Rate: [Sample Requests / Sent]
-- Top Performing Template: [Highest conversion rate]
-
-**Sample Conversion:**
-- Total Samples Delivered: [COUNT from Samples tab]
-- Sample-to-Customer Rate: [Customers / Samples]
-- Average Processing Time: [AVERAGE of Processing Time]
-- Average Time to Conversion: [AVERAGE of Days to Conversion]
-- Customer Satisfaction (Samples): [AVERAGE of Satisfaction Rating]
-
-**Customer Metrics:**
-- Total Customers: [COUNT from Customers tab where Status = Active]
-- Monthly Recurring Revenue (MRR): [SUM of Monthly Fee where Plan = Monthly]
-- Total Revenue (All-Time): [SUM of Total Revenue]
-- Average Customer Lifetime: [AVERAGE of Months Active]
-- Churn Rate: [Churned Customers / Total Customers]
-- Customer Satisfaction: [AVERAGE of Satisfaction Score]
-
-**Sales Funnel:**
+**Columns:**
 ```
-100 Leads Added
-  ↓ 15% reply rate
-15 Positive Responses
-  ↓ 50% request sample
-8 Samples Delivered
-  ↓ 30% convert
-2-3 New Customers
+A: Date Requested
+B: Name
+C: Email
+D: Company
+E: Document Type (Invoice/Receipt/Statement/etc.)
+F: What They Need (vendor, amount, dates, line items...)
+G: Status (RECEIVED → PROCESSING → DELIVERED → CONVERTED/LOST)
+H: Date Delivered
+I: Conversion Status (PENDING/YES/NO)
+J: Conversion Date (if YES)
+K: Notes (issues, feedback, quality)
 ```
 
-**Graphs to Include:**
-1. Leads Added Over Time (line chart)
-2. Conversion Funnel (funnel chart)
-3. Revenue Growth (bar chart by month)
-4. Outreach Performance by Template (bar chart)
-5. Customer Retention Curve (line chart)
-
-### Weekly Review Checklist (Peggy + Troy)
-
-Every Monday morning:
-- [ ] Review dashboard metrics
-- [ ] Identify what's working (double down)
-- [ ] Identify what's not working (adjust)
-- [ ] Set goals for the week
-- [ ] Review at-risk customers
-- [ ] Prioritize high-value leads
-
----
-
-## Data Entry Standards
-
-### Consistency Rules
-
-**Dates:**
-- Always use YYYY-MM-DD format
-- Use formulas for auto-calculation when possible
-
-**Names:**
-- First name + Last name (John Smith, not JOHN SMITH)
-- Company names as they appear on website (proper caps)
-
-**Emails:**
-- All lowercase (john@company.com)
-- Verify before adding (use email verification tool)
-
-**Sources:**
-- Use consistent categories:
-  - Reddit r/FulfillmentByAmazon
-  - Reddit r/shopify
-  - LinkedIn (direct)
-  - Facebook - [Group Name]
-  - Referral - [Referrer Name]
-  - Website Inquiry
-
-**Status Updates:**
-- Update immediately when status changes
-- Always include "Last Activity" date
-- Add notes explaining status changes
-
----
-
-## Google Sheets Setup Instructions
-
-### Initial Setup (Troy to create, share with Peggy)
-
-1. **Create new Google Sheet**: "PDF_Extraction_Sales_Tracker"
-
-2. **Create 5 tabs** with these exact names:
-   - Leads
-   - Outreach
-   - Samples
-   - Customers
-   - Metrics
-
-3. **Add column headers** (copy from this document)
-
-4. **Set up data validation** (dropdowns):
-   - Status fields: Create dropdown with allowed values
-   - Priority fields: High / Medium / Low
-   - Plan Type: Monthly Unlimited / Pay-Per-Batch
-   - Etc.
-
-5. **Add conditional formatting**:
-   - High priority leads: Green highlight
-   - At-risk customers: Red highlight
-   - Overdue follow-ups: Yellow highlight
-
-6. **Create formulas**:
-   - Auto-calculate dates (days since last contact, etc.)
-   - Auto-calculate revenue totals
-   - Auto-link tabs by ID
-
-7. **Share with Peggy**: Give edit access
-
-### Sample Row (Leads Tab)
-
+**Status Flow:**
 ```
-L-0001 | 2026-02-09 | John Smith | ABC Supply Co | Owner | john@abcsupply.com | linkedin.com/in/johnsmith | | Reddit | r/FulfillmentByAmazon Jan 15 post | Amazon FBA | $500K-$2M | 45 | "drowning in invoice paperwork" | QuickBooks | 9 | New | High | Posts frequently about scaling ops | high-volume, growing, QB-user | 2026-02-09 | Send initial email | Peggy
+RECEIVED (sample email arrived)
+  ↓
+PROCESSING (Troy working on extraction)
+  ↓
+DELIVERED (sent results back)
+  ↓
+CONVERTED (they signed up) ✅
+OR
+LOST (didn't convert) ❌
+```
+
+**SLA Tracking:**
+- Target: RECEIVED → DELIVERED within 24 hours
+- Red flag if >48 hours in PROCESSING
+- Peggy sends reminder if overdue
+
+**Conversion Window:**
+- Track up to 7 days after delivery
+- If no response by day 7 → mark LOST
+- Track conversion rate weekly
+
+---
+
+### Tab 3: CUSTOMERS
+
+**Purpose:** Active paying customers
+
+**Columns:**
+```
+A: Sign-Up Date
+B: Name
+C: Email
+D: Company
+E: Plan (Starter $49 / Business $149 / Enterprise $399)
+F: MRR (monthly recurring revenue)
+G: Last Document Date
+H: Total Documents Processed (lifetime)
+I: Documents This Month
+J: Status (ACTIVE / AT_RISK / CHURNED)
+K: Next Billing Date
+L: Notes (preferences, issues, feedback)
+```
+
+**Status Definitions:**
+- **ACTIVE:** Using service regularly (docs in last 7 days)
+- **AT_RISK:** No docs in 7-14 days (send check-in)
+- **CHURNED:** Cancelled or no docs in 30+ days
+
+**Health Monitoring:**
+```
+GREEN: Last doc < 7 days ago (active)
+YELLOW: Last doc 7-14 days ago (check in)
+RED: Last doc > 14 days ago (at risk)
+```
+
+**Automated Actions:**
+- Peggy checks daily
+- Yellow → Send check-in email
+- Red → Flag for Troy (might cancel)
+
+---
+
+### Tab 4: DOCUMENTS (Customer Activity)
+
+**Purpose:** Track every document processed for paying customers
+
+**Columns:**
+```
+A: Date Received
+B: Customer Name
+C: Document Type
+D: Pages
+E: Status (RECEIVED → PROCESSING → DELIVERED)
+F: Date Delivered
+G: Turnaround Time (hours)
+H: Issues/Notes
+```
+
+**SLA Targets:**
+- Business hours: 2-hour turnaround
+- After hours: 24-hour turnaround
+
+**Tracking:**
+- Daily volume
+- Average turnaround time
+- Quality issues
+- Customer satisfaction
+
+---
+
+### Tab 5: METRICS (Weekly Summary)
+
+**Purpose:** Track key performance indicators
+
+**Columns:**
+```
+A: Week Starting
+B: Emails Sent
+C: Replies
+D: Reply Rate %
+E: Samples Requested
+F: Samples Delivered
+G: Sample → Customer Conversion
+H: Conversion Rate %
+I: New Customers
+J: New MRR
+K: Total MRR
+L: Churn (customers lost)
+M: Net MRR Change
+N: Notes
+```
+
+**Formulas:**
+- Reply Rate % = (Replies / Emails Sent) × 100
+- Conversion Rate % = (Conversions / Samples Delivered) × 100
+- Net MRR Change = New MRR - Churned MRR
+
+**Weekly Review:**
+- Peggy fills in every Monday
+- Compare to previous week
+- Identify trends
+- Plan optimizations
+
+---
+
+### Tab 6: FEEDBACK
+
+**Purpose:** Learn from customer conversations
+
+**Columns:**
+```
+A: Date
+B: Contact
+C: Type (Why No / Feature Request / Complaint / Praise)
+D: Feedback Text
+E: Action Taken
+F: Follow-Up Needed
+```
+
+**Categories:**
+- **Why No:** Why people didn't convert
+- **Feature Request:** What customers want
+- **Complaint:** What's not working
+- **Praise:** What's working well
+
+**Usage:**
+- Review monthly
+- Identify patterns
+- Prioritize fixes/features
+- Use praise as testimonials
+
+---
+
+## 🔔 NOTIFICATION SYSTEM
+
+### Discord Alerts (Real-Time)
+
+**Channel:** #pdf-extraction-service
+
+**High Priority (Immediate):**
+```
+🚨 NEW SAMPLE REQUEST
+Name: Jane Doe
+Company: AcmeStore
+Email: jane@acmestore.com
+Document: Invoice
+Status: RECEIVED
+Action needed: Extract within 24 hours
+[Link to tracking sheet]
+```
+
+**Medium Priority (Daily Digest):**
+```
+📊 Daily Launch Report - [Date]
+
+Yesterday's Activity:
+- Emails sent: 20
+- Replies: 3 (see LEADS tab)
+- Samples delivered: 1
+
+Your Action Items:
+- [ ] Extract sample for Mike (received yesterday)
+- [ ] Follow up with Sarah (replied but needs clarification)
+
+Progress: 2/3 customers this week
+[Link to sheet]
+```
+
+**Low Priority (Weekly):**
+```
+📈 Week 1 Summary
+
+Results:
+- 100 emails sent
+- 6 replies (6%)
+- 2 samples delivered
+- 1 conversion! 🎉
+
+Next week plan:
+- Send 150 emails
+- Follow up with 4 hot leads
+- Expected: 2 more customers
+
+[Full metrics in sheet]
 ```
 
 ---
 
-## Backup & Security
+## 🤖 AUTOMATION WORKFLOW
 
-**Daily Backup:**
-- Google Sheets auto-saves (cloud-based)
-- Export to CSV weekly (stored in ~/repos/pdf-extraction-service/data/)
-- Troy has owner access (can restore if needed)
+### Lead Outreach Automation
 
-**Access Control:**
-- Troy: Owner (full access)
-- Peggy: Editor (full access)
-- Others: View-only (if needed for contractors)
+**Step 1: Lead Added (Manual or Peggy)**
+```
+1. Troy/Peggy finds lead
+2. Adds to LEADS tab with personalization notes
+3. Status: NEW
+4. Follow-up due: Today
+```
 
-**Data Privacy:**
-- No sensitive financial data (invoices) stored in tracker
-- Only contact info and business metrics
-- Comply with CAN-SPAM (track opt-outs)
+**Step 2: Email Sent (Peggy)**
+```
+1. Peggy drafts personalized email
+2. Troy approves (first 10 to set style)
+3. Peggy sends
+4. Updates sheet:
+   - Status: CONTACTED
+   - Last Contact Date: [today]
+   - Follow-Up Due: [today + 3 days]
+```
 
----
+**Step 3: Response Tracking (Auto)**
+```
+1. Reply comes to samples@domain
+2. Peggy monitors inbox
+3. Updates sheet:
+   - Status: REPLIED
+   - Reply Text: [what they said]
+4. Notifies Troy in Discord
+5. Peggy drafts response
+```
 
-## Daily Workflow (Peggy's Routine)
+**Step 4: Follow-Ups (Auto)**
+```
+Day 3: No response?
+- Peggy sends Follow-Up #1
+- Updates sheet: Follow-Up Due = +4 days
 
-### Morning (9:00 AM):
-1. **Check Metrics tab** - Review yesterday's performance
-2. **Check Outreach tab** - Any replies overnight? Respond immediately.
-3. **Check Samples tab** - Any pending samples? Process ASAP.
-4. **Check Customers tab** - Any at-risk flags? Reach out.
+Day 7: Still no response?
+- Peggy sends Follow-Up #2 (final)
+- Updates sheet: Follow-Up Due = N/A
+- Status stays CONTACTED (give them space)
 
-### Midday (1:00 PM):
-5. **Add new leads** - Research and add 5-10 qualified leads to Leads tab
-6. **Send outreach emails** - Contact 10-15 leads (initial or follow-ups)
-7. **Update statuses** - Log all activity in appropriate tabs
-
-### Afternoon (4:00 PM):
-8. **Follow up on samples** - Any delivered 2-3 days ago? Send conversion email.
-9. **Update metrics** - Calculate daily performance
-10. **Plan tomorrow** - Flag leads/actions for next day
-
-### Evening (7:00 PM):
-11. **Final email check** - Respond to any late replies
-12. **Update Last Activity dates** - Ensure all tabs current
-13. **Report to Troy** - Summary of day's activity (if needed)
-
----
-
-## Reporting Cadence
-
-**Daily** (if activity):
-- Quick summary to Troy: "Added X leads, sent Y emails, Z replies"
-
-**Weekly** (every Monday):
-- Full metrics review
-- Wins and challenges
-- Plan for the week
-
-**Monthly** (first Monday):
-- Performance dashboard
-- Revenue update
-- Customer health report
-- Recommendations for next month
+Day 14: No response?
+- Status → LOST
+- Archive to separate tab
+```
 
 ---
 
-## Success Criteria
+### Sample Request Automation
 
-**Month 1 Goals:**
-- ✅ 100 qualified leads added
-- ✅ 80% leads contacted (initial email sent)
-- ✅ 15% reply rate achieved
-- ✅ 10 samples delivered
-- ✅ 3-5 customers acquired
+**Instant Response (Peggy):**
+```
+1. Sample request arrives
+2. Peggy responds within 5 mins
+3. Adds to SAMPLES tab
+4. Notifies Troy
+5. Sets status: RECEIVED
+```
 
-**Month 3 Goals:**
-- ✅ 300 total leads
-- ✅ 20 active customers
-- ✅ $3,000+ MRR
-- ✅ 25% sample-to-customer conversion
-- ✅ 4.5+ customer satisfaction score
+**Processing Alert:**
+```
+If >24 hours in RECEIVED:
+- Peggy sends Troy reminder
+- Highlights in sheet (RED)
+
+If >48 hours:
+- Peggy escalates: "⚠️ URGENT: Sample overdue"
+```
+
+**Delivery Follow-Up:**
+```
+Day 0: Sample delivered
+- Status: DELIVERED
+- Conversion status: PENDING
+
+Day 2: No response?
+- Peggy sends: "Did you get a chance to review?"
+
+Day 7: Still no response?
+- Peggy asks: "Not a fit? Any feedback?"
+- Status: LOST (track reason)
+```
 
 ---
 
-*Last Updated: 2026-02-09*
-*Owner: Peggy (AI Assistant)*
+### Customer Monitoring (Daily)
+
+**Every Morning (Peggy):**
+```
+1. Check CUSTOMERS tab
+2. For each customer:
+   - Last doc date < 7 days? → GREEN (all good)
+   - Last doc date 7-14 days? → YELLOW (send check-in)
+   - Last doc date >14 days? → RED (flag for Troy)
+3. Send daily report to Troy
+```
+
+**Check-In Email (Auto):**
+```
+Trigger: Yellow status (7-14 days)
+
+Email:
+"Hey [Name]! Just checking in - everything going okay?
+Haven't seen any docs from you this week. Let me know
+if you need anything! - Troy"
+```
+
+**Churn Risk Alert (Manual):**
+```
+Trigger: Red status (>14 days)
+
+Discord:
+"🚨 CHURN RISK: [Name] - no docs in 2+ weeks
+Last activity: [date]
+Action: Troy to reach out personally"
+```
+
+---
+
+## 📈 WEEKLY REVIEW PROCESS
+
+**Every Monday (Peggy + Troy):**
+
+### 1. Update Metrics Tab
+```
+Peggy fills in:
+- Emails sent last week
+- Reply/conversion rates
+- New MRR
+- Churn (if any)
+```
+
+### 2. Analyze Results
+```
+Questions:
+- What's working? (reply rates, segments, messages)
+- What's not? (low conversion, high churn)
+- Any patterns in feedback?
+```
+
+### 3. Adjust Strategy
+```
+Examples:
+- eCommerce: 8% reply rate → send more!
+- Bookkeepers: 2% reply rate → pause this segment
+- "Too expensive": 3 people said → test lower pricing tier?
+```
+
+### 4. Plan Next Week
+```
+- Email volume (increase/decrease?)
+- Segment focus (double down or pivot?)
+- New experiments (subject lines, offers, etc.)
+```
+
+---
+
+## 🛠️ TOOLS & INTEGRATIONS
+
+### Current (Manual):
+- Google Sheets (tracking)
+- Gmail (email)
+- Discord (notifications)
+
+### Future (Automated):
+- Zapier/Make: Auto-update sheet from Gmail
+- Stripe: Track payments automatically
+- QuickBooks: Revenue tracking
+
+---
+
+## ✅ DAILY CHECKLIST
+
+### Peggy's Morning Routine:
+- [ ] Check LEADS tab for follow-ups due today
+- [ ] Check SAMPLES tab for overdue extractions
+- [ ] Check CUSTOMERS tab for health status
+- [ ] Send daily report to Troy
+- [ ] Update any pending statuses
+
+### Troy's Morning Routine:
+- [ ] Read Peggy's daily report
+- [ ] Handle any flagged action items
+- [ ] Approve any pending emails (if needed)
+- [ ] Extract any pending samples
+
+---
+
+## 📊 REPORTS & EXPORTS
+
+### Daily Report (Email to Troy):
+```
+Subject: Launch Day [X] - [Date]
+
+📧 Email Activity:
+- Sent: 20
+- Replies: 2 (Jane, Mike)
+- Follow-ups due: 3
+
+📋 Samples:
+- Pending extraction: 1 (Sarah's invoice)
+- Delivered yesterday: 1 (Mike - awaiting conversion)
+
+💰 Customers:
+- Total: 2
+- MRR: $98
+- All healthy (recent activity)
+
+Action Items:
+- [ ] Extract Sarah's invoice (due in 12 hours)
+- [ ] Follow up with Mike if no response by EOD
+
+[View full sheet: link]
+```
+
+### Weekly Summary (Mondays):
+```
+Subject: Week [X] Summary - PDF Service
+
+Results:
+✅ 100 emails → 6 replies (6%)
+✅ 2 samples delivered
+✅ 1 conversion ($49 MRR)
+❌ 1 lost (too expensive)
+
+This Week's Plan:
+- 150 emails (scaling up)
+- Focus on eCommerce (best segment)
+- New subject line test
+
+[Full metrics in sheet]
+```
+
+---
+
+## 🎯 SUCCESS METRICS TO TRACK
+
+### Week 1:
+- Email volume
+- Reply rate (target: >5%)
+- Sample requests (target: 2+)
+
+### Week 2:
+- Sample → Customer conversion (target: >20%)
+- First paying customer!
+- Customer satisfaction
+
+### Month 1:
+- Total customers (target: 3-5)
+- MRR (target: $150-250)
+- Churn rate (target: <10%)
+- Re-order rate (target: >80%)
+
+---
+
+**Everything tracked, nothing forgotten!** 📊🐧
