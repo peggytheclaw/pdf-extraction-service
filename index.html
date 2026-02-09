@@ -86,84 +86,6 @@
             font-weight: 700;
         }
 
-        .pricing-tiers {
-            display: grid;
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-
-        .tier {
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid #e1e8ed;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .tier:hover {
-            border-color: #2a5298;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42, 82, 152, 0.2);
-        }
-
-        .tier.selected {
-            border-color: #2a5298;
-            background: #f0f4ff;
-        }
-
-        .tier-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .tier-name {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1e3c72;
-        }
-
-        .tier-price {
-            font-size: 28px;
-            font-weight: 700;
-            color: #2a5298;
-        }
-
-        .tier-price .period {
-            font-size: 14px;
-            font-weight: 500;
-            color: #5a6c7d;
-        }
-
-        .tier-details {
-            color: #5a6c7d;
-            font-size: 15px;
-        }
-
-        .tier-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: #2a5298;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .custom-input {
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid #e1e8ed;
-            margin-top: 20px;
-        }
-
         .input-group {
             margin-bottom: 0;
         }
@@ -446,46 +368,21 @@
             <p class="hero-subtitle">Stop manually copying data from PDFs. Our service extracts, parses, and delivers structured data directly to your systems—automatically.</p>
 
             <div class="calculator">
-                <h3>Simple, Transparent Pricing</h3>
+                <h3>Calculate Your Monthly Cost</h3>
                 
-                <div class="pricing-tiers">
-                    <div class="tier selected" data-tier="starter">
-                        <div class="tier-badge">Most Popular</div>
-                        <div class="tier-header">
-                            <div class="tier-name">Starter</div>
-                            <div class="tier-price">$49<span class="period">/mo</span></div>
-                        </div>
-                        <div class="tier-details">Up to 200 pages per month</div>
-                    </div>
-
-                    <div class="tier" data-tier="business">
-                        <div class="tier-header">
-                            <div class="tier-name">Business</div>
-                            <div class="tier-price">$149<span class="period">/mo</span></div>
-                        </div>
-                        <div class="tier-details">Up to 1,000 pages per month</div>
-                    </div>
-
-                    <div class="tier" data-tier="enterprise">
-                        <div class="tier-header">
-                            <div class="tier-name">Enterprise</div>
-                            <div class="tier-price">$399<span class="period">/mo</span></div>
-                        </div>
-                        <div class="tier-details">Up to 5,000 pages per month</div>
-                    </div>
-                </div>
-
-                <div class="custom-input">
-                    <div class="input-group">
-                        <label for="pages">Need more? Enter custom volume:</label>
-                        <input type="number" id="pages" placeholder="e.g. 10000" min="5001" step="1000">
-                    </div>
+                <div class="input-group">
+                    <label for="pages">Pages processed per month</label>
+                    <input type="number" id="pages" value="1000" min="0" step="100">
                 </div>
 
                 <div class="result">
                     <h4>Your Estimated Cost</h4>
-                    <div class="price">$49</div>
+                    <div class="price">$149</div>
                     <div class="period">per month</div>
+                </div>
+
+                <div style="text-align: center; color: #5a6c7d; font-size: 15px; margin-top: 20px;">
+                    <strong>Pricing:</strong> $49/mo for up to 200 pages • $149/mo for up to 1,000 pages • $399/mo for up to 5,000 pages • $0.05/page for higher volumes
                 </div>
             </div>
         </section>
@@ -642,48 +539,31 @@
     </footer>
 
     <script>
-        // Pricing tier selection
-        const tiers = document.querySelectorAll('.tier');
-        const customInput = document.getElementById('pages');
+        // Calculator
+        const pagesInput = document.getElementById('pages');
         const costDisplay = document.querySelector('.result .price');
 
-        const tierPricing = {
-            starter: { price: 49, pages: 200 },
-            business: { price: 149, pages: 1000 },
-            enterprise: { price: 399, pages: 5000 }
-        };
-
-        let selectedTier = 'starter';
-
-        tiers.forEach(tier => {
-            tier.addEventListener('click', function() {
-                tiers.forEach(t => t.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedTier = this.dataset.tier;
-                customInput.value = '';
-                updateCost();
-            });
-        });
-
-        customInput.addEventListener('input', function() {
-            if (this.value) {
-                tiers.forEach(t => t.classList.remove('selected'));
-            }
-            updateCost();
-        });
-
         function updateCost() {
-            const customPages = parseInt(customInput.value);
-            
-            if (customPages && customPages > 5000) {
-                // Custom pricing: $0.05 per page for volumes over 5000
-                const cost = Math.ceil(customPages * 0.05);
-                costDisplay.textContent = `$${cost}`;
+            const pages = parseInt(pagesInput.value) || 0;
+            let cost;
+
+            if (pages === 0) {
+                cost = 0;
+            } else if (pages <= 200) {
+                cost = 49;
+            } else if (pages <= 1000) {
+                cost = 149;
+            } else if (pages <= 5000) {
+                cost = 399;
             } else {
-                // Use selected tier pricing
-                costDisplay.textContent = `$${tierPricing[selectedTier].price}`;
+                // Over 5000 pages: $0.05 per page
+                cost = Math.ceil(pages * 0.05);
             }
+
+            costDisplay.textContent = `$${cost}`;
         }
+
+        pagesInput.addEventListener('input', updateCost);
 
         // Form submission (placeholder - needs backend)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
