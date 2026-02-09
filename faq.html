@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PDF Extraction FAQ - Common Questions About Automated Document Processing</title>
+    <meta name="description" content="Frequently asked questions about PDF data extraction: accuracy, pricing, integration, security, supported formats, and automation. Get answers about invoice processing, receipt parsing, and document automation.">
+    <meta name="keywords" content="PDF extraction FAQ, document processing questions, invoice automation help, PDF parsing accuracy, API integration questions, OCR accuracy, document security">
+    
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I automate PDF invoice processing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our service automatically extracts invoice data including vendor name, invoice number, date, line items, quantities, SKUs, and totals. You can send invoices via email, API, or file sync (Dropbox/Google Drive), and we'll return structured data (JSON, CSV, or XML) to your accounting system or database. Setup takes 1-2 business days with custom extraction rules tailored to your invoice formats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the best way to extract data from receipts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload receipts via email forwarding or mobile app integration. Our AI-powered system extracts merchant name, date, total amount, tax, and individual line items. Output is delivered as JSON or CSV data that integrates directly with expense management platforms like Expensify, Concur, or custom accounting systems. Average processing time is under 60 seconds per receipt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What services parse PDF documents into structured data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer a fully managed PDF parsing service with custom extraction rules tailored to your document formats. Unlike DIY OCR tools that require technical setup, we handle complex layouts, multi-page documents, tables, and varied formats. We deliver clean, structured data (JSON, CSV, XML) ready for your database or application with 99.9% accuracy guaranteed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you extract tables from PDF reports?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our system identifies and extracts tabular data from financial reports, analytics documents, research papers, and multi-column layouts. We preserve row and column structure and can output to CSV, Excel, JSON arrays, or custom formats. This works for both digital PDFs and scanned documents."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is automated PDF data extraction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our baseline accuracy is 99.9% using AI models trained on millions of business documents. For critical workflows requiring 100% accuracy, we offer optional human-in-the-loop validation. Our system handles edge cases, poor scan quality, and complex layouts better than traditional OCR tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of PDFs can you process?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We process all PDF types: digital PDFs (created from software), scanned paper documents (with OCR), invoices, receipts, purchase orders, contracts, forms, bank statements, financial reports, medical records, tax documents, and custom business documents. Our system works with single-page and multi-page documents up to 100MB in size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I integrate PDF extraction with my existing system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiple integration options: (1) REST API for real-time programmatic access, (2) Webhook delivery that pushes extracted data to your endpoint, (3) Email forwarding to a dedicated processing address, (4) File share sync with Dropbox, Google Drive, or OneDrive, (5) Scheduled batch processing via SFTP/FTP. We support JSON, CSV, XML output formats and can deliver directly to your database or application."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does PDF extraction service cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pricing starts at $49/month for up to 200 pages, $149/month for 1,000 pages, and $399/month for 5,000 pages. High-volume customers (5,000+ pages/month) pay $0.05 per page with custom pricing available. All plans include custom extraction rules, API access, and email support. No per-document fees or hidden costs."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://peggytheclaw.github.io/pdf-extraction-service/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "FAQ",
+        "item": "https://peggytheclaw.github.io/pdf-extraction-service/faq.html"
+      }]
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 24px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        header .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            opacity: 0.95;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .page-header {
+            background: white;
+            padding: 48px 0;
+            margin: 20px 0;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 1px solid #e1e8ed;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            color: #1e3c72;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            color: #5a6c7d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .faq-category {
+            background: white;
+            padding: 40px;
+            margin: 20px 0;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 1px solid #e1e8ed;
+        }
+
+        .faq-category h2 {
+            font-size: 28px;
+            color: #1e3c72;
+            margin-bottom: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e1e8ed;
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            color: #1e3c72;
+            margin-bottom: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: #2a5298;
+        }
+
+        .faq-question::after {
+            content: "▼";
+            font-size: 14px;
+            color: #2a5298;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(-180deg);
+        }
+
+        .faq-answer {
+            color: #5a6c7d;
+            line-height: 1.8;
+            font-size: 16px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 1000px;
+            padding-top: 8px;
+        }
+
+        .faq-answer p {
+            margin-bottom: 12px;
+        }
+
+        .faq-answer ul {
+            margin: 12px 0 12px 24px;
+        }
+
+        .faq-answer li {
+            padding: 4px 0;
+        }
+
+        .faq-answer strong {
+            color: #2a5298;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 48px 40px;
+            margin: 20px 0;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(30, 60, 114, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 24px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: white;
+            color: #1e3c72;
+            padding: 16px 48px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #5a6c7d;
+        }
+
+        footer a {
+            color: #2a5298;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header .header-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .faq-category {
+                padding: 24px;
+            }
+
+            .faq-category h2 {
+                font-size: 22px;
+            }
+
+            .faq-question {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1>PDF Extraction & Data Parsing</h1>
+                    <p>Trusted by businesses to automate document processing</p>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="use-cases.html">Use Cases</a>
+                    <a href="technical.html">Technical</a>
+                    <a href="faq.html">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Get answers to common questions about PDF extraction, automation, pricing, and integration</p>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="faq-category">
+            <h2>🚀 Getting Started</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I get started with PDF extraction?</div>
+                <div class="faq-answer">
+                    <p>Getting started is simple:</p>
+                    <ol>
+                        <li><strong>Contact us</strong> via the form on our homepage with details about your use case</li>
+                        <li><strong>Share a sample</strong> PDF and describe what data you need extracted</li>
+                        <li><strong>We configure</strong> custom extraction rules for your document types (1-2 business days)</li>
+                        <li><strong>Start processing</strong> via email, API, or file sync—whichever works best for you</li>
+                    </ol>
+                    <p>No coding required for email/file sync methods. API integration typically takes 30-60 minutes with our SDKs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do I need technical expertise to use this service?</div>
+                <div class="faq-answer">
+                    <p>Not at all! We offer multiple integration methods for different skill levels:</p>
+                    <ul>
+                        <li><strong>No-code:</strong> Email forwarding or file share sync (Dropbox/Google Drive)—just upload and receive results</li>
+                        <li><strong>Low-code:</strong> Webhook integration where you receive data via HTTP POST</li>
+                        <li><strong>Developer-friendly:</strong> REST API with SDKs for Python, Node.js, Java, Ruby, and more</li>
+                    </ul>
+                    <p>We handle all the complexity—extraction rules, OCR, data formatting, and delivery. You just need to send us documents.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How long does setup take?</div>
+                <div class="faq-answer">
+                    <p>Setup timelines vary by integration method:</p>
+                    <ul>
+                        <li><strong>Email forwarding:</strong> 5-10 minutes (we provide a dedicated address)</li>
+                        <li><strong>File sync (Dropbox/Drive):</strong> 15-30 minutes (authorize connection)</li>
+                        <li><strong>API integration:</strong> 30-60 minutes with SDK, 2-4 hours for custom integration</li>
+                        <li><strong>Custom extraction rules:</strong> 1-2 business days (we configure based on your samples)</li>
+                    </ul>
+                    <p>Most customers are processing documents within 48 hours of initial contact.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is there a free trial?</div>
+                <div class="faq-answer">
+                    <p>Yes! We offer a <strong>7-day free trial</strong> with up to 50 pages of extraction. No credit card required to start.</p>
+                    <p>The trial includes:</p>
+                    <ul>
+                        <li>Full access to all features</li>
+                        <li>Custom extraction rule setup</li>
+                        <li>All integration methods (email, API, file sync)</li>
+                        <li>Email support</li>
+                    </ul>
+                    <p>After the trial, choose a plan that fits your volume or continue with pay-as-you-go pricing.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accuracy & Quality -->
+        <div class="faq-category">
+            <h2>🎯 Accuracy & Quality</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How accurate is automated PDF data extraction?</div>
+                <div class="faq-answer">
+                    <p>Our baseline accuracy is <strong>99.9%</strong> for standard business documents (invoices, receipts, forms). This is achieved using:</p>
+                    <ul>
+                        <li>AI models trained on millions of business documents</li>
+                        <li>Custom extraction rules tailored to your document formats</li>
+                        <li>Advanced OCR for scanned documents</li>
+                        <li>Contextual validation (e.g., totals must match line item sums)</li>
+                    </ul>
+                    <p>For critical workflows requiring 100% accuracy, we offer <strong>optional human-in-the-loop validation</strong> where an expert reviews extractions before delivery.</p>
+                    <p>Our system handles edge cases, poor scan quality, and complex layouts significantly better than traditional OCR tools.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What happens if extraction accuracy is low?</div>
+                <div class="faq-answer">
+                    <p>Every extraction includes a <strong>confidence score</strong> (0.0 to 1.0). If confidence falls below your threshold (typically 0.95), we:</p>
+                    <ol>
+                        <li>Flag the document for review</li>
+                        <li>Send alert via webhook or email</li>
+                        <li>Optionally route to human validation queue</li>
+                    </ol>
+                    <p>Low confidence is usually caused by:</p>
+                    <ul>
+                        <li>Poor scan quality (low resolution, skewed pages)</li>
+                        <li>Handwritten text in unexpected places</li>
+                        <li>Completely new document format not in your extraction rules</li>
+                    </ul>
+                    <p>We work with you to refine extraction rules when patterns emerge, continuously improving accuracy.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can you handle handwritten forms?</div>
+                <div class="faq-answer">
+                    <p>Yes, with some caveats:</p>
+                    <ul>
+                        <li><strong>Printed + Handwritten:</strong> Forms with printed labels and handwritten fields work well (insurance forms, applications)</li>
+                        <li><strong>Clear handwriting:</strong> Block letters or legible cursive achieve 90-95% accuracy</li>
+                        <li><strong>Poor handwriting:</strong> May require human validation for critical data</li>
+                    </ul>
+                    <p>Best results come from:</p>
+                    <ul>
+                        <li>300+ DPI scans</li>
+                        <li>Good lighting and contrast</li>
+                        <li>Forms designed with clear field boundaries</li>
+                    </ul>
+                    <p>For fully handwritten documents, we recommend human-in-the-loop validation to ensure accuracy.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What about tables and complex layouts?</div>
+                <div class="faq-answer">
+                    <p>We excel at complex document structures:</p>
+                    <ul>
+                        <li><strong>Tables:</strong> Multi-column tables with headers, merged cells, and nested structures</li>
+                        <li><strong>Multi-column text:</strong> Reports, newsletters, brochures</li>
+                        <li><strong>Forms:</strong> Checkboxes, radio buttons, signature fields</li>
+                        <li><strong>Mixed layouts:</strong> Text + tables + images on the same page</li>
+                    </ul>
+                    <p>Our AI-powered layout detection identifies table boundaries, column headers, and data relationships. We preserve structure in the output format (CSV columns match table columns, JSON arrays for rows).</p>
+                    <p>This works for both digital PDFs and scanned documents.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Plans -->
+        <div class="faq-category">
+            <h2>💰 Pricing & Plans</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How much does PDF extraction service cost?</div>
+                <div class="faq-answer">
+                    <p><strong>Monthly plans:</strong></p>
+                    <ul>
+                        <li><strong>Starter:</strong> $49/month for up to 200 pages</li>
+                        <li><strong>Business:</strong> $149/month for up to 1,000 pages</li>
+                        <li><strong>Enterprise:</strong> $399/month for up to 5,000 pages</li>
+                    </ul>
+                    <p><strong>High-volume:</strong> $0.05 per page for 5,000+ pages/month with custom pricing available</p>
+                    <p><strong>What's included:</strong></p>
+                    <ul>
+                        <li>Custom extraction rules for your document types</li>
+                        <li>All integration methods (email, API, file sync, webhooks)</li>
+                        <li>All output formats (JSON, CSV, XML, Excel)</li>
+                        <li>Email support (phone support on Enterprise)</li>
+                        <li>99.9% accuracy guarantee</li>
+                    </ul>
+                    <p><strong>No hidden fees:</strong> No per-document charges, API request fees, or integration costs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What counts as a "page"?</div>
+                <div class="faq-answer">
+                    <p>Pricing is based on PDF pages processed:</p>
+                    <ul>
+                        <li>A 1-page invoice = 1 page</li>
+                        <li>A 5-page contract = 5 pages</li>
+                        <li>A 50-page financial report = 50 pages</li>
+                    </ul>
+                    <p>We count actual PDF pages, not file size. If you submit a 10-page document but only need data from page 1, you can specify extraction zones to reduce costs.</p>
+                    <p>Failed extractions (corrupt files, unsupported formats) do not count toward your quota.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What happens if I exceed my monthly page limit?</div>
+                <div class="faq-answer">
+                    <p>You have options:</p>
+                    <ul>
+                        <li><strong>Overage:</strong> Pay $0.10 per additional page (automatically billed)</li>
+                        <li><strong>Upgrade:</strong> Move to the next plan tier mid-month (prorated)</li>
+                        <li><strong>Pause:</strong> New extractions queue until next month (available on request)</li>
+                    </ul>
+                    <p>We send alerts at 80% and 95% of your quota so you're never surprised. Enterprise customers can set custom overage rates and thresholds.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel anytime?</div>
+                <div class="faq-answer">
+                    <p>Yes. All plans are <strong>month-to-month with no long-term contracts</strong>. Cancel anytime from your dashboard or by emailing support.</p>
+                    <p>Upon cancellation:</p>
+                    <ul>
+                        <li>You can process documents through the end of your billing period</li>
+                        <li>Extracted data remains accessible for 30 days</li>
+                        <li>We can export all your data before deletion</li>
+                    </ul>
+                    <p>No cancellation fees or penalties. Annual plans (20% discount) have a 90-day notice period.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration & Technical -->
+        <div class="faq-category">
+            <h2>🔗 Integration & Technical</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I integrate PDF extraction with my existing system?</div>
+                <div class="faq-answer">
+                    <p>We offer multiple integration methods:</p>
+                    <p><strong>1. REST API</strong> (most flexible)</p>
+                    <ul>
+                        <li>Upload PDFs programmatically</li>
+                        <li>Poll for status or use webhooks</li>
+                        <li>SDKs available: Python, Node.js, Java, Ruby, PHP, Go, C#</li>
+                    </ul>
+                    <p><strong>2. Webhook Delivery</strong> (push notifications)</p>
+                    <ul>
+                        <li>We POST extracted data to your endpoint when complete</li>
+                        <li>Include signature for verification</li>
+                        <li>Automatic retry with exponential backoff</li>
+                    </ul>
+                    <p><strong>3. Email Forwarding</strong> (no code)</p>
+                    <ul>
+                        <li>Forward PDFs to your dedicated address (e.g., invoices@yourcompany.pdfextract.io)</li>
+                        <li>Receive JSON/CSV reply or webhook delivery</li>
+                    </ul>
+                    <p><strong>4. File Share Sync</strong> (automated)</p>
+                    <ul>
+                        <li>Connect Dropbox, Google Drive, OneDrive, Box</li>
+                        <li>New PDFs in designated folder process automatically</li>
+                        <li>Results saved to same or different folder</li>
+                    </ul>
+                    <p><strong>5. SFTP/FTP Batch Processing</strong> (enterprise)</p>
+                    <ul>
+                        <li>Upload batches of PDFs</li>
+                        <li>Scheduled processing (hourly, daily, custom)</li>
+                        <li>Results delivered via same protocol</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What output formats do you support?</div>
+                <div class="faq-answer">
+                    <p>We deliver extracted data in multiple formats:</p>
+                    <ul>
+                        <li><strong>JSON:</strong> Nested structure, ideal for APIs and NoSQL databases</li>
+                        <li><strong>CSV:</strong> Flat structure, works with Excel and SQL imports</li>
+                        <li><strong>XML:</strong> Schema validation, EDI systems, enterprise integrations</li>
+                        <li><strong>Excel (.xlsx):</strong> Formatted spreadsheets, multiple sheets for complex documents</li>
+                        <li><strong>Custom schemas:</strong> Map to your existing data structure (JSON Schema, XML DTD)</li>
+                    </ul>
+                    <p>You can specify output format per request or set a default for all extractions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How long does processing take?</div>
+                <div class="faq-answer">
+                    <p>Processing times vary by document complexity:</p>
+                    <ul>
+                        <li><strong>Simple documents (1-5 pages):</strong> 30-60 seconds</li>
+                        <li><strong>Standard documents (5-20 pages):</strong> 1-3 minutes</li>
+                        <li><strong>Complex documents (20-50 pages):</strong> 3-5 minutes</li>
+                        <li><strong>Large documents (50+ pages):</strong> 5-15 minutes</li>
+                    </ul>
+                    <p>Factors affecting speed:</p>
+                    <ul>
+                        <li>Page count</li>
+                        <li>Document type (digital vs. scanned)</li>
+                        <li>Complexity (tables, forms, handwriting)</li>
+                        <li>Current queue load</li>
+                    </ul>
+                    <p>Business and Enterprise plans include priority processing (2x faster).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What are the API rate limits?</div>
+                <div class="faq-answer">
+                    <p>Rate limits by plan:</p>
+                    <ul>
+                        <li><strong>Starter:</strong> 50 requests/minute, burst: 100</li>
+                        <li><strong>Business:</strong> 100 requests/minute, burst: 200</li>
+                        <li><strong>Enterprise:</strong> 500 requests/minute, custom burst</li>
+                    </ul>
+                    <p>Rate limits apply to API calls (upload, status check, etc.), not pages processed. Exceeding limits returns HTTP 429 with Retry-After header.</p>
+                    <p>For batch processing of thousands of documents, use file sync or SFTP methods which have no rate limits.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I process documents in bulk?</div>
+                <div class="faq-answer">
+                    <p>Absolutely! Bulk processing options:</p>
+                    <p><strong>1. Batch API Upload</strong></p>
+                    <ul>
+                        <li>Upload multiple PDFs in one request (up to 50 files)</li>
+                        <li>Process in parallel for faster completion</li>
+                        <li>Single webhook with all results</li>
+                    </ul>
+                    <p><strong>2. File Share Sync</strong></p>
+                    <ul>
+                        <li>Drop 100s-1000s of PDFs into a folder</li>
+                        <li>Automatic processing as files arrive</li>
+                        <li>Results organized by folder or metadata</li>
+                    </ul>
+                    <p><strong>3. SFTP Batch Processing</strong></p>
+                    <ul>
+                        <li>Upload entire directories</li>
+                        <li>Scheduled processing (e.g., nightly batch)</li>
+                        <li>Ideal for thousands of documents</li>
+                    </ul>
+                    <p>All methods support parallel processing—upload 1,000 documents and they'll all process concurrently.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security & Compliance -->
+        <div class="faq-category">
+            <h2>🔒 Security & Compliance</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is my data secure?</div>
+                <div class="faq-answer">
+                    <p>Yes. Security is built into every layer:</p>
+                    <p><strong>Encryption:</strong></p>
+                    <ul>
+                        <li>TLS 1.3 for data in transit (all API calls, webhooks)</li>
+                        <li>AES-256 bit encryption for data at rest (stored documents and results)</li>
+                        <li>Encrypted backups with separate keys</li>
+                    </ul>
+                    <p><strong>Infrastructure:</strong></p>
+                    <ul>
+                        <li>SOC 2 Type II certified data centers</li>
+                        <li>Network isolation and firewalls</li>
+                        <li>DDoS protection and intrusion detection</li>
+                        <li>24/7 security monitoring</li>
+                    </ul>
+                    <p><strong>Access Control:</strong></p>
+                    <ul>
+                        <li>API key authentication with scope limiting</li>
+                        <li>IP allowlisting available</li>
+                        <li>Role-based access for team members</li>
+                        <li>Complete audit logs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are you GDPR/HIPAA compliant?</div>
+                <div class="faq-answer">
+                    <p><strong>GDPR (General Data Protection Regulation):</strong></p>
+                    <p>Yes, fully compliant. We provide:</p>
+                    <ul>
+                        <li>Data Processing Agreement (DPA)</li>
+                        <li>EU data residency option (data stays in EU)</li>
+                        <li>Right to erasure (delete data on request)</li>
+                        <li>Data export in machine-readable format</li>
+                        <li>Privacy by design architecture</li>
+                    </ul>
+                    <p><strong>HIPAA (Health Insurance Portability and Accountability Act):</strong></p>
+                    <p>Yes, for healthcare customers:</p>
+                    <ul>
+                        <li>Business Associate Agreement (BAA) available</li>
+                        <li>PHI encryption and access controls</li>
+                        <li>Audit logging of all PHI access</li>
+                        <li>HIPAA-compliant data centers</li>
+                    </ul>
+                    <p><strong>Other Compliance:</strong></p>
+                    <ul>
+                        <li>SOC 2 Type II certified</li>
+                        <li>CCPA compliant (California Consumer Privacy Act)</li>
+                        <li>PCI DSS for payment data (if applicable)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How long do you keep my data?</div>
+                <div class="faq-answer">
+                    <p><strong>Default retention:</strong></p>
+                    <ul>
+                        <li>Original PDFs: 30 days</li>
+                        <li>Extracted data: 90 days</li>
+                        <li>API logs: 1 year</li>
+                        <li>Audit trails: 7 years (Enterprise only)</li>
+                    </ul>
+                    <p><strong>Configurable options:</strong></p>
+                    <ul>
+                        <li><strong>Zero-retention mode:</strong> Delete documents and data immediately after extraction</li>
+                        <li><strong>Extended retention:</strong> Keep data longer for compliance or reference</li>
+                        <li><strong>Archive mode:</strong> Long-term storage for auditing (7-10 years)</li>
+                    </ul>
+                    <p>You can delete individual documents or all data anytime from your dashboard. Deletion is permanent and irreversible.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Who has access to my documents?</div>
+                <div class="faq-answer">
+                    <p><strong>Strict access controls:</strong></p>
+                    <ul>
+                        <li><strong>You:</strong> Full access via dashboard and API</li>
+                        <li><strong>Processing systems:</strong> Automated extraction (no human access)</li>
+                        <li><strong>Support staff:</strong> Only with your explicit permission for troubleshooting</li>
+                        <li><strong>Human validators:</strong> Only if you enable human-in-the-loop validation</li>
+                    </ul>
+                    <p>All access is logged with timestamps and user IDs. Enterprise customers can require multi-factor authentication for any human access.</p>
+                    <p><strong>We never:</strong></p>
+                    <ul>
+                        <li>Use your data to train AI models (unless you opt-in)</li>
+                        <li>Share data with third parties</li>
+                        <li>Sell or monetize your documents</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Types -->
+        <div class="faq-category">
+            <h2>📄 Document Types & Support</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">What types of PDFs can you process?</div>
+                <div class="faq-answer">
+                    <p>We process all PDF types and formats:</p>
+                    <p><strong>Document Categories:</strong></p>
+                    <ul>
+                        <li>Invoices, purchase orders, packing slips</li>
+                        <li>Receipts, expense reports</li>
+                        <li>Forms, applications, surveys</li>
+                        <li>Contracts, agreements, legal documents</li>
+                        <li>Financial reports, statements, analytics</li>
+                        <li>Bank statements, credit card statements</li>
+                        <li>Medical records, prescriptions, lab reports</li>
+                        <li>Tax documents (W-2, 1099, etc.)</li>
+                        <li>Shipping labels, bills of lading</li>
+                        <li>Custom business documents</li>
+                    </ul>
+                    <p><strong>Technical Support:</strong></p>
+                    <ul>
+                        <li>All PDF versions (1.0 to 2.0)</li>
+                        <li>Digital PDFs (text-based)</li>
+                        <li>Scanned documents (image-based with OCR)</li>
+                        <li>Hybrid PDFs (mix of text and images)</li>
+                        <li>PDF/A archival format</li>
+                        <li>Password-protected PDFs (password required)</li>
+                        <li>Single or multi-page documents (up to 500 pages)</li>
+                        <li>Maximum file size: 100MB</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can you extract tables from PDF reports?</div>
+                <div class="faq-answer">
+                    <p>Yes! Table extraction is one of our specialties:</p>
+                    <p><strong>Supported table types:</strong></p>
+                    <ul>
+                        <li>Simple tables (rows and columns)</li>
+                        <li>Complex tables (merged cells, headers, sub-headers)</li>
+                        <li>Nested tables</li>
+                        <li>Multi-page tables that span across pages</li>
+                        <li>Tables without visible borders</li>
+                    </ul>
+                    <p><strong>Output options:</strong></p>
+                    <ul>
+                        <li>CSV with preserved column structure</li>
+                        <li>Excel with separate sheet per table</li>
+                        <li>JSON arrays (one object per row)</li>
+                        <li>SQL INSERT statements for direct database import</li>
+                    </ul>
+                    <p>Works for both digital PDFs and scanned documents. Our AI identifies table boundaries and relationships even when formatting is inconsistent.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What languages do you support?</div>
+                <div class="faq-answer">
+                    <p><strong>Fully supported (99%+ accuracy):</strong></p>
+                    <ul>
+                        <li>English</li>
+                        <li>Spanish</li>
+                        <li>French</li>
+                        <li>German</li>
+                        <li>Portuguese</li>
+                        <li>Italian</li>
+                    </ul>
+                    <p><strong>Beta support (95%+ accuracy):</strong></p>
+                    <ul>
+                        <li>Dutch, Norwegian, Swedish, Danish</li>
+                        <li>Polish, Czech, Romanian</li>
+                        <li>Japanese, Chinese (Simplified), Korean</li>
+                    </ul>
+                    <p>Multi-language documents (e.g., English + Spanish invoice) are handled automatically. Contact us for languages not listed—we can often add support with custom training.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if my document format isn't standard?</div>
+                <div class="faq-answer">
+                    <p>No problem! We specialize in custom document formats:</p>
+                    <p><strong>Custom extraction setup:</strong></p>
+                    <ol>
+                        <li>Send us 3-5 sample documents</li>
+                        <li>Describe what data you need extracted</li>
+                        <li>We create custom extraction rules (1-2 business days)</li>
+                        <li>Review sample extractions and provide feedback</li>
+                        <li>We refine rules until accuracy meets your requirements</li>
+                    </ol>
+                    <p>This works for:</p>
+                    <ul>
+                        <li>Proprietary invoice formats</li>
+                        <li>Industry-specific forms</li>
+                        <li>Custom reports with unique layouts</li>
+                        <li>Multi-format documents (when vendors send different formats)</li>
+                    </ul>
+                    <p>Once configured, your extraction rules handle all similar documents automatically.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support & Troubleshooting -->
+        <div class="faq-category">
+            <h2>💡 Support & Troubleshooting</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if extraction fails or data is incorrect?</div>
+                <div class="faq-answer">
+                    <p>We provide multiple ways to handle errors:</p>
+                    <p><strong>Automatic detection:</strong></p>
+                    <ul>
+                        <li>Confidence scoring flags low-quality extractions</li>
+                        <li>Validation rules check data integrity (e.g., invoice totals)</li>
+                        <li>Failed jobs return detailed error messages</li>
+                    </ul>
+                    <p><strong>When issues occur:</strong></p>
+                    <ol>
+                        <li>Check the confidence score and error details</li>
+                        <li>Review the original PDF for quality issues (scan quality, corruption)</li>
+                        <li>Resubmit with higher resolution or better scan</li>
+                        <li>Contact support with job ID—we investigate and refine extraction rules</li>
+                    </ol>
+                    <p><strong>Continuous improvement:</strong></p>
+                    <ul>
+                        <li>We track accuracy metrics per document type</li>
+                        <li>Proactively refine rules when patterns emerge</li>
+                        <li>Quarterly reviews for Enterprise customers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I get support?</div>
+                <div class="faq-answer">
+                    <p><strong>Support channels by plan:</strong></p>
+                    <p><strong>Starter:</strong></p>
+                    <ul>
+                        <li>Email support (response within 24 hours)</li>
+                        <li>Documentation and API reference</li>
+                        <li>Community forum access</li>
+                    </ul>
+                    <p><strong>Business:</strong></p>
+                    <ul>
+                        <li>Priority email support (response within 4 hours)</li>
+                        <li>Live chat during business hours</li>
+                        <li>Extraction rule optimization</li>
+                    </ul>
+                    <p><strong>Enterprise:</strong></p>
+                    <ul>
+                        <li>Phone support (24/7 for critical issues)</li>
+                        <li>Dedicated account manager</li>
+                        <li>Slack/Teams channel integration</li>
+                        <li>Quarterly business reviews</li>
+                        <li>Custom SLA available</li>
+                    </ul>
+                    <p>All plans include access to our comprehensive documentation, API reference, and SDK guides.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can you help with integration?</div>
+                <div class="faq-answer">
+                    <p>Yes! We provide integration assistance at every level:</p>
+                    <p><strong>Self-service (included):</strong></p>
+                    <ul>
+                        <li>Detailed API documentation with examples</li>
+                        <li>SDKs with sample code (Python, Node.js, Java, Ruby, etc.)</li>
+                        <li>Integration guides for popular platforms (Zapier, Make, n8n)</li>
+                        <li>Video tutorials and walkthroughs</li>
+                    </ul>
+                    <p><strong>Guided integration (Business+):</strong></p>
+                    <ul>
+                        <li>Setup consultation call</li>
+                        <li>Code review and architecture recommendations</li>
+                        <li>Troubleshooting and debugging assistance</li>
+                    </ul>
+                    <p><strong>White-glove integration (Enterprise):</strong></p>
+                    <ul>
+                        <li>Dedicated integration engineer</li>
+                        <li>Custom development for complex requirements</li>
+                        <li>Direct integration with your systems</li>
+                        <li>Ongoing technical support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Still Have Questions?</h2>
+            <p>Get in touch—we're here to help you automate document processing</p>
+            <a href="index.html#contact" class="cta-button">Contact Us</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 PDF Extraction Service. All rights reserved.</p>
+            <p style="margin-top: 12px; font-size: 14px;">
+                <a href="index.html">Home</a> | 
+                <a href="use-cases.html">Use Cases</a> | 
+                <a href="technical.html">Technical Details</a> | 
+                <a href="faq.html">FAQ</a> | 
+                <a href="ai.txt">AI.txt</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 14px;">Email: troycosentino@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Toggle current answer
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Open first FAQ item by default
+        if (document.querySelector('.faq-question')) {
+            document.querySelector('.faq-question').click();
+        }
+    </script>
+</body>
+</html>
