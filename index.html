@@ -3,7 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Extraction & Data Parsing Service - Automate Your Document Processing</title>
+    
+    <!-- Enhanced SEO Metadata for AI Search Engines -->
+    <title>PDF Extraction & Data Parsing Service - Automate Invoice, Receipt & Document Processing</title>
+    <meta name="description" content="Professional PDF data extraction service. Automate invoice processing, receipt parsing, and form data extraction. 99.9% accuracy, API integration, $49/mo. Extract structured data from any PDF document type.">
+    <meta name="keywords" content="PDF extraction, invoice processing automation, receipt parsing, document data extraction, PDF to JSON, PDF to CSV, automated invoice processing, receipt OCR, form data extraction">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="PDF Extraction Service - Automate Document Data Extraction">
+    <meta property="og:description" content="Turn PDFs into structured data. Automate invoice processing, receipt parsing & form extraction. 99.9% accuracy, API integration, from $49/month.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peggytheclaw.github.io/pdf-extraction-service/">
+    
+    <!-- Structured Data - Service Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "PDF Extraction & Data Parsing Service",
+      "description": "Professional automated PDF data extraction service that converts invoices, receipts, forms, and reports into structured data formats (JSON, CSV, XML). Custom extraction rules, API integration, and 99.9% accuracy.",
+      "url": "https://peggytheclaw.github.io/pdf-extraction-service/",
+      "provider": {
+        "@type": "Organization",
+        "name": "PDF Extraction Service",
+        "email": "troycosentino@gmail.com"
+      },
+      "serviceType": "PDF Data Extraction and Document Processing Automation",
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "PDF Extraction Service Plans",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Starter Plan",
+              "description": "Up to 200 pages per month of automated PDF extraction"
+            },
+            "price": "49",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "49",
+              "priceCurrency": "USD",
+              "unitText": "month"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Plan",
+              "description": "Up to 1,000 pages per month of automated PDF extraction"
+            },
+            "price": "149",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "149",
+              "priceCurrency": "USD",
+              "unitText": "month"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Enterprise Plan",
+              "description": "Up to 5,000 pages per month of automated PDF extraction"
+            },
+            "price": "399",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "399",
+              "priceCurrency": "USD",
+              "unitText": "month"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://peggytheclaw.github.io/pdf-extraction-service/"
+      }]
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -31,6 +128,12 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
+        header .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         header h1 {
             font-size: 28px;
             font-weight: 700;
@@ -40,6 +143,25 @@
             font-size: 16px;
             opacity: 0.95;
             margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            opacity: 0.95;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
 
         .hero {
@@ -152,35 +274,7 @@
             box-shadow: 0 2px 6px rgba(42, 82, 152, 0.4);
         }
 
-        .result {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 32px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 32px;
-            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.3);
-        }
-
-        .result h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            opacity: 0.95;
-        }
-
-        .result .price {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 8px 0;
-        }
-
-        .result .period {
-            font-size: 20px;
-            opacity: 0.9;
-        }
-
-        .value-props {
+        .pricing-section {
             background: white;
             padding: 40px 0;
             margin: 20px 0;
@@ -189,79 +283,84 @@
             border: 1px solid #e1e8ed;
         }
 
-        .value-props h2 {
+        .pricing-section h2 {
             text-align: center;
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: 32px;
             color: #1e3c72;
             font-weight: 700;
         }
 
-        .features {
+        .pricing-tiers {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .feature {
-            padding: 24px;
+        .pricing-tier {
+            background: white;
+            padding: 32px;
             border-radius: 12px;
-            background: #f8f9fa;
-            border: 1px solid #e1e8ed;
+            border: 2px solid #e1e8ed;
+            display: flex;
+            flex-direction: column;
             transition: all 0.3s;
         }
 
-        .feature:hover {
+        .pricing-tier:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+            border-color: #2a5298;
         }
 
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .feature-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: white;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .pricing-tier.featured {
+            border-color: #2a5298;
+            box-shadow: 0 8px 24px rgba(42, 82, 152, 0.2);
         }
 
-        .feature h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
+        .tier-name {
+            font-size: 24px;
+            font-weight: 700;
             color: #1e3c72;
-            font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .feature p {
+        .tier-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2a5298;
+            margin-bottom: 4px;
+        }
+
+        .tier-period {
+            font-size: 16px;
             color: #5a6c7d;
-            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tier-description {
             font-size: 15px;
+            color: #5a6c7d;
+            margin-bottom: 24px;
+            line-height: 1.6;
         }
 
-        .feature ul {
+        .tier-features {
             list-style: none;
-            margin-top: 16px;
+            margin-bottom: 32px;
+            flex-grow: 1;
         }
 
-        .feature ul li {
+        .tier-features li {
             padding: 8px 0;
             color: #5a6c7d;
             font-size: 15px;
         }
 
-        .feature ul li:before {
+        .tier-features li:before {
             content: "✓ ";
             color: #2a5298;
             font-weight: bold;
@@ -380,22 +479,42 @@
             color: #5a6c7d;
         }
 
+        footer a {
+            color: #2a5298;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
+            header .header-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
             .hero-left h2 {
                 font-size: 28px;
             }
 
             .hero-content {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 gap: 24px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
             }
 
             .calculator {
                 padding: 24px;
+            }
+
+            .pricing-tiers {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -403,8 +522,18 @@
 <body>
     <header>
         <div class="container">
-            <h1>PDF Extraction & Data Parsing</h1>
-            <p>Trusted by businesses to automate document processing</p>
+            <div class="header-content">
+                <div>
+                    <h1>PDF Extraction & Data Parsing</h1>
+                    <p>Trusted by businesses to automate document processing</p>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="use-cases.html">Use Cases</a>
+                    <a href="technical.html">Technical</a>
+                    <a href="faq.html">FAQ</a>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -415,36 +544,17 @@
                     <h2>Turn PDFs Into Actionable Data</h2>
                     <p style="margin-bottom: 24px;">Stop manually copying data from PDFs. Our service extracts, parses, and delivers structured data directly to your systems—automatically.</p>
                     
-                    <h3 style="font-size: 20px; margin-bottom: 16px; color: #1e3c72; font-weight: 600;">Simple Pricing</h3>
-                    
-                    <div style="display: grid; gap: 12px;">
-                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Starter</div>
-                                <div style="font-size: 14px; color: #5a6c7d;">Up to 200 pages/month</div>
-                            </div>
-                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$49</div>
-                        </div>
-                        
-                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Business</div>
-                                <div style="font-size: 14px; color: #5a6c7d;">Up to 1,000 pages/month</div>
-                            </div>
-                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$149</div>
-                        </div>
-                        
-                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Enterprise</div>
-                                <div style="font-size: 14px; color: #5a6c7d;">Up to 5,000 pages/month</div>
-                            </div>
-                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$399</div>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; color: #5a6c7d; font-size: 13px; margin-top: 12px;">
-                        Custom volumes over 5,000 pages at $0.05/page
+                    <p style="font-size: 16px; color: #2a5298; font-weight: 600; margin-bottom: 16px;">Automate extraction from:</p>
+                    <ul style="list-style: none; margin: 0 0 24px 0; font-size: 16px; color: #5a6c7d;">
+                        <li style="padding: 4px 0;">✓ Invoices & Purchase Orders</li>
+                        <li style="padding: 4px 0;">✓ Receipts & Expense Reports</li>
+                        <li style="padding: 4px 0;">✓ Forms & Applications</li>
+                        <li style="padding: 4px 0;">✓ Financial Reports & Tables</li>
+                    </ul>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#pricing" style="background: #2a5298; color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">View Pricing</a>
+                        <a href="use-cases.html" style="background: white; color: #2a5298; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; border: 2px solid #2a5298;">See Use Cases</a>
                     </div>
                 </div>
 
@@ -526,84 +636,63 @@
             </div>
         </div>
 
-        <section class="value-props">
-            <h2>Why Choose Us</h2>
-            <div class="features" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; margin: 0 auto;">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="23 4 23 10 17 10"></polyline>
-                            <polyline points="1 20 1 14 7 14"></polyline>
-                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                        </svg>
-                    </div>
-                    <h3>Flexible Integration</h3>
-                    <p>Email, file share, API uploads—we work with your existing systems. Output directly to your API or as structured files.</p>
+        <section class="pricing-section" id="pricing">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-tiers">
+                <div class="pricing-tier">
+                    <div class="tier-name">Starter</div>
+                    <div class="tier-price">$49</div>
+                    <div class="tier-period">per month</div>
+                    <div class="tier-description">Perfect for small businesses and startups getting started with automation</div>
+                    <ul class="tier-features">
+                        <li>Up to 200 pages/month</li>
+                        <li>Custom extraction rules</li>
+                        <li>Email & API integration</li>
+                        <li>JSON, CSV, XML output</li>
+                        <li>Email support</li>
+                        <li>99.9% accuracy guarantee</li>
+                    </ul>
                 </div>
 
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                        </svg>
-                    </div>
-                    <h3>Built for Scale</h3>
-                    <p>From hundreds to millions of pages per month. Our infrastructure scales with your needs seamlessly.</p>
+                <div class="pricing-tier featured">
+                    <div class="tier-name">Business</div>
+                    <div class="tier-price">$149</div>
+                    <div class="tier-period">per month</div>
+                    <div class="tier-description">Most popular plan for growing businesses with regular document processing</div>
+                    <ul class="tier-features">
+                        <li>Up to 1,000 pages/month</li>
+                        <li>Custom extraction rules</li>
+                        <li>All integration methods</li>
+                        <li>All output formats</li>
+                        <li>Priority email support</li>
+                        <li>Webhook delivery</li>
+                        <li>SLA guarantee</li>
+                    </ul>
                 </div>
 
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                            <polyline points="13 2 13 9 20 9"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Any PDF Format</h3>
-                    <p>Invoices, receipts, reports, forms, or custom documents. If it's in a PDF, we can extract it accurately.</p>
+                <div class="pricing-tier">
+                    <div class="tier-name">Enterprise</div>
+                    <div class="tier-price">$399</div>
+                    <div class="tier-period">per month</div>
+                    <div class="tier-description">For organizations processing high volumes with dedicated support</div>
+                    <ul class="tier-features">
+                        <li>Up to 5,000 pages/month</li>
+                        <li>Custom extraction rules</li>
+                        <li>All integration methods</li>
+                        <li>Custom output formats</li>
+                        <li>Phone & email support</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom SLA available</li>
+                    </ul>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 32px; color: #5a6c7d;">
+                <p><strong>Need more?</strong> Custom volumes over 5,000 pages at $0.05/page</p>
+                <p style="margin-top: 8px;"><a href="#contact" style="color: #2a5298; font-weight: 600;">Contact us</a> for enterprise-scale pricing and custom requirements</p>
             </div>
         </section>
 
-        <section class="value-props">
-            <h2>How It Works</h2>
-            <div style="max-width: 700px; margin: 0 auto;">
-                <div style="display: flex; flex-direction: column; gap: 32px;">
-                    <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">1</div>
-                        <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">Share Your Sample</h3>
-                            <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Send us a sample PDF and an example of the output format you need. This helps us understand exactly what data you want extracted.</p>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">2</div>
-                        <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">We Build Your Pipeline</h3>
-                            <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Our team creates custom extraction rules tailored to your documents. No configuration or technical work required from you.</p>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">3</div>
-                        <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">Send Your Documents</h3>
-                            <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Upload PDFs via email, file share, API, or your preferred method. We'll automatically process them as they arrive.</p>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">4</div>
-                        <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">Receive Structured Data</h3>
-                            <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Get clean, structured data delivered directly to your systems—via email reply, API endpoint, or structured files—ready to use in your database, spreadsheet, or application.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta">
+        <section class="cta" id="contact">
             <h2>Ready to Automate Your PDFs?</h2>
             <p>Get started today—tell us about your project</p>
             
@@ -627,7 +716,14 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 PDF Extraction Service. All rights reserved.</p>
+            <p>&copy; 2026 PDF Extraction Service. All rights reserved.</p>
+            <p style="margin-top: 12px; font-size: 14px;">
+                <a href="use-cases.html">Use Cases</a> | 
+                <a href="technical.html">Technical Details</a> | 
+                <a href="faq.html">FAQ</a> | 
+                <a href="ai.txt">AI.txt</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 14px;">Email: troycosentino@gmail.com</p>
         </div>
     </footer>
 
