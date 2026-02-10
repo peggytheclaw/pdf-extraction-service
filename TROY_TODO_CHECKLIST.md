@@ -1,16 +1,31 @@
 # 🚀 Launch Checklist for Troy
 
-## ✅ DONE - Website is Live!
+## ✅ DONE - ParsleyPDF is Live! 🌿
 
-**Current Status:**
+**Current Status (Updated Feb 10, 2026):**
+- ✅ **Rebranded to ParsleyPDF** with fresh green colors
+- ✅ **Parsley leaf logo** designed and implemented
+- ✅ Landing page fully redesigned with new branding
 - ✅ S3 bucket created and configured
-- ✅ Landing page uploaded
-- ✅ CloudFront distribution created (deploying now, ~15-20 min)
-- ✅ HTTPS enabled via CloudFront
+- ✅ CloudFront distribution deployed with HTTPS
+- ✅ Site live and accessible
 
 **Live URLs:**
+- **CloudFront (HTTPS):** https://d19f32uxc46hkh.cloudfront.net ⭐ **Use This**
 - **S3 (HTTP):** http://pdf-extraction-service-1770706737.s3-website-us-west-2.amazonaws.com
-- **CloudFront (HTTPS):** https://d19f32uxc46hkh.cloudfront.net (will be ready in ~15 min)
+
+**Branding:**
+- Name: **ParsleyPDF**
+- Tagline: "Fresh, structured data from your documents"
+- Colors: Parsley greens (#2D7A3E, #52A461, #A8D5A3)
+- Logo: Multi-branch parsley leaf SVG
+
+**Recent Progress (Feb 10, 2026):**
+- ✅ Designed custom parsley leaf logo (multi-branch SVG)
+- ✅ Recolored entire site with fresh green palette
+- ✅ Updated all copy and branding to ParsleyPDF
+- ✅ Committed to GitHub and deployed to AWS
+- ✅ CloudFront cache invalidated - live now!
 
 ---
 
@@ -19,32 +34,32 @@
 ### 🔴 TOMORROW (Before Launch)
 
 #### 1. Register Domain
-**Action:** Register a domain name for the service
+**Action:** Register a domain name for ParsleyPDF
 
-**Recommendations:**
-- `extractpdf.io` (tech-focused, short)
-- `pdfextractor.ai` (clear purpose)
-- `invoiceextract.io` (industry-specific)
-- `dataextract.pro` (professional)
+**Top Recommendations:**
+- `parsleypdf.com` ⭐ **First Choice** (matches brand exactly)
+- `parsleypdf.io` (tech-focused alternative)
+- `parsley.pdf` (new .pdf TLD, unique but may be pricey)
+- `getparsley.com` (if parsleypdf.com is taken)
 
-**Cost:** ~$12-15/year (Namecheap, Google Domains, AWS Route 53)
+**Cost:** ~$12-15/year for .com/.io (Namecheap, Google Domains, AWS Route 53)
 
 **Where to buy:**
-- Namecheap (easiest)
-- Google Domains
+- Namecheap (easiest, good prices)
+- Google Domains (integrates well with Workspace)
 - AWS Route 53 (if you want everything in AWS)
 
 #### 2. Set Up Domain Email
-**Action:** Create `samples@yourdomain.com` email for receiving PDFs
+**Action:** Create `samples@parsleypdf.com` email for receiving PDFs
 
 **Options:**
 
-**A) Google Workspace ($6/month):**
+**A) Google Workspace ($6/month):** ⭐ **Recommended**
 - Full Gmail interface
-- Professional email
+- Professional email (@parsleypdf.com)
 - Easy to manage
 - I can access via IMAP like my current email
-- **Recommended**
+- Can auto-monitor for sample requests
 
 **B) AWS WorkMail ($4/month):**
 - Cheaper
@@ -55,7 +70,7 @@
 - Free for 1 user
 - Basic but functional
 
-**My recommendation:** Google Workspace - I already know how to monitor Gmail accounts, so I can auto-handle samples@ emails just like peggytheclaw@gmail.com.
+**My recommendation:** Google Workspace - I already know how to monitor Gmail accounts, so I can auto-handle `samples@parsleypdf.com` emails just like peggytheclaw@gmail.com.
 
 #### 3. Point Domain to CloudFront
 **Action:** Add DNS records to point your domain to CloudFront
