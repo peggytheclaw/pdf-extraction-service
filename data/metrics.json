@@ -4,10 +4,10 @@
   "blockers": [
     "Email account not set up yet",
     "IMAP/SMTP credentials needed",
-    "Initial lead list empty"
+    "Contact info needs research for all 50 leads"
   ],
   "pipeline": {
-    "new": 0,
+    "new": 50,
     "qualified": 0,
     "contacted": 0,
     "follow_up_1": 0,
@@ -20,7 +20,7 @@
   },
   "weekly_stats": {
     "week_starting": "2026-02-10",
-    "leads_researched": 0,
+    "leads_researched": 50,
     "emails_sent": 0,
     "replies_received": 0,
     "reply_rate": 0,
@@ -29,73 +29,124 @@
     "target_reply_rate": 0.10
   },
   "segments": {
-    "AmazonFBA": {
-      "leads": 0,
+    "Bookkeeper": {
+      "leads": 12,
       "contacted": 0,
       "replied": 0,
       "reply_rate": 0,
-      "converted": 0
+      "converted": 0,
+      "notes": "Highest value segment - process invoices for multiple clients. 8x P1 priority."
+    },
+    "SmallBusiness": {
+      "leads": 15,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0,
+      "notes": "Manual expense/invoice tracking pain. Mix of P1 and P2."
+    },
+    "AmazonFBA": {
+      "leads": 8,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0,
+      "notes": "Reconciliation and supplier invoice pain. P1-P2 mix."
+    },
+    "Ecommerce": {
+      "leads": 5,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0,
+      "notes": "Multi-channel sellers. Bookkeeping complexity."
     },
     "Shopify": {
-      "leads": 0,
+      "leads": 3,
       "contacted": 0,
       "replied": 0,
       "reply_rate": 0,
-      "converted": 0
-    },
-    "Bookkeeper": {
-      "leads": 0,
-      "contacted": 0,
-      "replied": 0,
-      "reply_rate": 0,
-      "converted": 0
+      "converted": 0,
+      "notes": "Multi-supplier management challenges."
     },
     "Contractor": {
-      "leads": 0,
+      "leads": 4,
       "contacted": 0,
       "replied": 0,
       "reply_rate": 0,
-      "converted": 0
+      "converted": 0,
+      "notes": "Service businesses with time tracking + invoicing pain."
+    },
+    "SaaS": {
+      "leads": 3,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0,
+      "notes": "Indie hackers. Lower volume but tech-savvy."
     }
+  },
+  "priority_breakdown": {
+    "P1": 27,
+    "P2": 19,
+    "P3": 4,
+    "notes": "54% are P1 (explicit pain). Focus outreach on P1 first."
   },
   "sources": {
     "Reddit": {
-      "leads": 0,
-      "reply_rate": 0
+      "leads": 45,
+      "reply_rate": 0,
+      "notes": "Best source. r/Bookkeeping and r/smallbusiness most productive."
     },
-    "LinkedIn": {
-      "leads": 0,
-      "reply_rate": 0
-    },
-    "Shopify": {
-      "leads": 0,
+    "Shopify Community": {
+      "leads": 2,
       "reply_rate": 0
     },
     "IndieHackers": {
-      "leads": 0,
-      "reply_rate": 0
+      "leads": 3,
+      "reply_rate": 0,
+      "notes": "Lower volume but good quality tech audience."
     }
   },
   "templates": {
     "Template1": {
       "sent": 0,
       "replied": 0,
-      "reply_rate": 0
+      "reply_rate": 0,
+      "target_segments": ["AmazonFBA", "Shopify", "Ecommerce", "SmallBusiness"]
     },
     "Template2": {
       "sent": 0,
       "replied": 0,
-      "reply_rate": 0
+      "reply_rate": 0,
+      "target_segments": ["Bookkeeper"]
     },
     "Template3": {
       "sent": 0,
       "replied": 0,
-      "reply_rate": 0
+      "reply_rate": 0,
+      "notes": "Follow-up #1 (3 days)"
     },
     "Template4": {
       "sent": 0,
       "replied": 0,
-      "reply_rate": 0
+      "reply_rate": 0,
+      "notes": "Follow-up #2 (7 days, final)"
     }
+  },
+  "research_insights": {
+    "best_pain_quotes": [
+      "2-8 hours per week on invoice processing",
+      "Paying someone part-time just to handle invoice entry",
+      "Process thousands of invoices every month",
+      "Burning through bookkeepers who can't handle complexity"
+    ],
+    "highest_value_segment": "Bookkeeper - processes for multiple clients, highest volume",
+    "next_steps": [
+      "Find contact info for 27 P1 leads first",
+      "Build personalization notes (qualification step)",
+      "Set up email account for outreach",
+      "Start with 10-lead test batch"
+    ]
   }
 }
