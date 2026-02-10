@@ -1,0 +1,9 @@
+{
+  "bucket": "pdf-extraction-service-1770706737",
+  "region": "us-west-2",
+  "s3_url": "http://pdf-extraction-service-1770706737.s3-website-us-west-2.amazonaws.com",
+  "cloudfront_id": "EWUWP2636A1JC",
+  "cloudfront_url": "https://d19f32uxc46hkh.cloudfront.net",
+  "status": "deploying",
+  "deployed_at": "2026-02-10T06:59:54Z"
+}
