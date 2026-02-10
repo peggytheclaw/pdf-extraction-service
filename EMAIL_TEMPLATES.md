@@ -105,8 +105,9 @@ Hey [Name],
 
 Following up on my email about invoice data extraction.
 
-Still happy to do a free sample if you want to see how it 
-works. Takes me 5 mins, saves you hours if it's a good fit.
+Still happy to do a free sample extraction if you want to see 
+what we can pull from your documents. Could save you hours 
+every week if it's a good fit.
 
 No pressure either way!
 
