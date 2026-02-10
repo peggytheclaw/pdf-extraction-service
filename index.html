@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Extraction & Data Parsing Service - Automate Your Document Processing</title>
+    <title>ParsleyPDF - Fresh, Structured Data from Your Documents</title>
     <style>
         * {
             margin: 0;
@@ -14,8 +14,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #2c3e50;
-            background: #f5f7fa;
+            color: #1A3A1F;
+            background: #F4F9F4;
         }
 
         .container {
@@ -25,10 +25,21 @@
         }
 
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%);
             color: white;
             padding: 24px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(45, 122, 62, 0.25);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
         }
 
         header h1 {
@@ -48,7 +59,7 @@
             margin: 20px 0;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            border: 1px solid #e1e8ed;
+            border: 1px solid #D8E8DA;
         }
 
         .hero-content {
@@ -67,7 +78,7 @@
         .hero-left h2 {
             font-size: 36px;
             margin-bottom: 16px;
-            color: #1e3c72;
+            color: #2D7A3E;
             font-weight: 700;
             line-height: 1.2;
         }
@@ -79,19 +90,19 @@
         }
 
         .calculator {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border: 3px solid #2a5298;
+            background: linear-gradient(135deg, #F8FBF8 0%, #E9F5EB 100%);
+            border: 3px solid #52A461;
             border-radius: 16px;
             padding: 32px;
             max-width: 1000px;
             margin: 0 auto;
-            box-shadow: 0 6px 20px rgba(42, 82, 152, 0.15);
+            box-shadow: 0 6px 20px rgba(82, 164, 97, 0.15);
         }
 
         .calculator h3 {
             font-size: 24px;
             margin-bottom: 24px;
-            color: #1e3c72;
+            color: #2D7A3E;
             text-align: center;
             font-weight: 700;
         }
@@ -104,28 +115,28 @@
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
-            color: #1e3c72;
+            color: #2D7A3E;
         }
 
         input[type="number"] {
             width: 100%;
             padding: 14px;
             font-size: 16px;
-            border: 2px solid #e1e8ed;
+            border: 2px solid #D8E8DA;
             border-radius: 8px;
             transition: border-color 0.2s;
         }
 
         input[type="number"]:focus {
             outline: none;
-            border-color: #2a5298;
+            border-color: #52A461;
         }
 
         input[type="range"] {
             width: 100%;
             height: 8px;
             border-radius: 4px;
-            background: #e1e8ed;
+            background: #D8E8DA;
             outline: none;
             -webkit-appearance: none;
             margin: 12px 0;
@@ -137,29 +148,29 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #2a5298;
+            background: #52A461;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(42, 82, 152, 0.4);
+            box-shadow: 0 2px 6px rgba(82, 164, 97, 0.4);
         }
 
         input[type="range"]::-moz-range-thumb {
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #2a5298;
+            background: #52A461;
             cursor: pointer;
             border: none;
-            box-shadow: 0 2px 6px rgba(42, 82, 152, 0.4);
+            box-shadow: 0 2px 6px rgba(82, 164, 97, 0.4);
         }
 
         .result {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%);
             color: white;
             padding: 32px;
             border-radius: 12px;
             text-align: center;
             margin-top: 32px;
-            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.3);
+            box-shadow: 0 6px 20px rgba(45, 122, 62, 0.3);
         }
 
         .result h4 {
@@ -186,14 +197,14 @@
             margin: 20px 0;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            border: 1px solid #e1e8ed;
+            border: 1px solid #D8E8DA;
         }
 
         .value-props h2 {
             text-align: center;
             font-size: 28px;
             margin-bottom: 32px;
-            color: #1e3c72;
+            color: #2D7A3E;
             font-weight: 700;
         }
 
@@ -206,8 +217,8 @@
         .feature {
             padding: 24px;
             border-radius: 12px;
-            background: #f8f9fa;
-            border: 1px solid #e1e8ed;
+            background: #F8FBF8;
+            border: 1px solid #D8E8DA;
             transition: all 0.3s;
         }
 
@@ -220,7 +231,7 @@
             width: 48px;
             height: 48px;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -240,7 +251,7 @@
         .feature h3 {
             font-size: 18px;
             margin-bottom: 8px;
-            color: #1e3c72;
+            color: #2D7A3E;
             font-weight: 600;
         }
 
@@ -263,7 +274,7 @@
 
         .feature ul li:before {
             content: "✓ ";
-            color: #2a5298;
+            color: #52A461;
             font-weight: bold;
             margin-right: 8px;
         }
@@ -292,7 +303,7 @@
         .trust-badge-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -310,17 +321,17 @@
         .trust-badge-text {
             font-size: 13px;
             font-weight: 600;
-            color: #1e3c72;
+            color: #2D7A3E;
         }
 
         .cta {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%);
             color: white;
             padding: 48px 0;
             margin: 20px 0;
             border-radius: 16px;
             text-align: center;
-            box-shadow: 0 8px 24px rgba(30, 60, 114, 0.3);
+            box-shadow: 0 8px 24px rgba(45, 122, 62, 0.3);
         }
 
         .cta h2 {
@@ -370,7 +381,7 @@
 
         button {
             background: white;
-            color: #1e3c72;
+            color: #2D7A3E;
             padding: 16px 48px;
             font-size: 18px;
             font-weight: 700;
@@ -415,8 +426,32 @@
 <body>
     <header>
         <div class="container">
-            <h1>PDF Extraction & Data Parsing</h1>
-            <p>We handle your document data entry - so you can focus on your business</p>
+            <div class="header-content">
+                <!-- Parsley Leaf Logo -->
+                <svg class="logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <!-- Stem -->
+                        <path d="M50 95 L50 50" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                        
+                        <!-- Center leaf -->
+                        <path d="M50 50 Q35 35 35 20 Q35 10 42 8 Q50 10 50 20 Q50 35 50 50" fill="#A8D5A3"/>
+                        <path d="M50 50 Q65 35 65 20 Q65 10 58 8 Q50 10 50 20 Q50 35 50 50" fill="#C8E6C9"/>
+                        
+                        <!-- Left branch -->
+                        <path d="M45 60 Q30 55 20 50 Q15 48 14 42 Q18 38 24 40 Q35 45 45 50" fill="#A8D5A3"/>
+                        <path d="M45 60 Q35 70 30 80 Q28 85 23 86 Q18 82 22 77 Q30 68 40 60" fill="#81C784"/>
+                        
+                        <!-- Right branch -->
+                        <path d="M55 60 Q70 55 80 50 Q85 48 86 42 Q82 38 76 40 Q65 45 55 50" fill="#C8E6C9"/>
+                        <path d="M55 60 Q65 70 70 80 Q72 85 77 86 Q82 82 78 77 Q70 68 60 60" fill="#A5D6A7"/>
+                    </g>
+                </svg>
+                
+                <div>
+                    <h1>ParsleyPDF</h1>
+                    <p>Fresh, structured data from your documents</p>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -427,39 +462,39 @@
                     <h2>We Handle Your PDF Data Entry - So You Don't Have To</h2>
                     <p style="margin-bottom: 24px;">Send us your invoices, receipts, or documents. We build custom extractors and deliver clean, structured data every time. No software to install. No setup hassles.</p>
                     
-                    <div style="background: #f0f7ff; padding: 16px; border-radius: 8px; margin-bottom: 24px; border-left: 4px solid #2a5298;">
-                        <p style="font-size: 16px; color: #1e3c72; margin: 0;">
+                    <div style="background: #E9F5EB; padding: 16px; border-radius: 8px; margin-bottom: 24px; border-left: 4px solid #52A461;">
+                        <p style="font-size: 16px; color: #2D7A3E; margin: 0;">
                             ✓ We build the extractor for you<br>
                             ✓ You send documents (email, upload, API)<br>
                             ✓ We deliver structured data (CSV, Excel, JSON)
                         </p>
                     </div>
                     
-                    <h3 style="font-size: 20px; margin-bottom: 16px; color: #1e3c72; font-weight: 600;">Simple Pricing</h3>
+                    <h3 style="font-size: 20px; margin-bottom: 16px; color: #2D7A3E; font-weight: 600;">Simple Pricing</h3>
                     
                     <div style="display: grid; gap: 12px;">
-                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #D8E8DA; display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Starter</div>
+                                <div style="font-weight: 600; color: #2D7A3E; font-size: 16px;">Starter</div>
                                 <div style="font-size: 14px; color: #5a6c7d;">Up to 200 pages/month</div>
                             </div>
-                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$49</div>
+                            <div style="font-size: 28px; font-weight: 700; color: #52A461;">$49</div>
                         </div>
                         
-                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #D8E8DA; display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Business</div>
+                                <div style="font-weight: 600; color: #2D7A3E; font-size: 16px;">Business</div>
                                 <div style="font-size: 14px; color: #5a6c7d;">Up to 1,000 pages/month</div>
                             </div>
-                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$149</div>
+                            <div style="font-size: 28px; font-weight: 700; color: #52A461;">$149</div>
                         </div>
                         
-                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #e1e8ed; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="background: white; padding: 16px 20px; border-radius: 8px; border: 2px solid #D8E8DA; display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <div style="font-weight: 600; color: #1e3c72; font-size: 16px;">Enterprise</div>
+                                <div style="font-weight: 600; color: #2D7A3E; font-size: 16px;">Enterprise</div>
                                 <div style="font-size: 14px; color: #5a6c7d;">Up to 5,000 pages/month</div>
                             </div>
-                            <div style="font-size: 28px; font-weight: 700; color: #2a5298;">$399</div>
+                            <div style="font-size: 28px; font-weight: 700; color: #52A461;">$399</div>
                         </div>
                     </div>
                     
@@ -474,7 +509,7 @@
                     <div class="input-group">
                         <label for="minutes">Minutes to process one PDF manually</label>
                         <input type="range" id="minutes" min="1" max="30" value="5" step="1">
-                        <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
+                        <div style="text-align: center; font-size: 18px; font-weight: 600; color: #2D7A3E; margin-top: 8px;">
                             <span id="minutesDisplay">5</span> minutes
                         </div>
                     </div>
@@ -482,19 +517,19 @@
                     <div class="input-group">
                         <label for="pdfs">PDFs processed per month</label>
                         <input type="range" id="pdfs" min="10" max="1000" value="100" step="10">
-                        <div style="text-align: center; font-size: 18px; font-weight: 600; color: #1e3c72; margin-top: 8px;">
+                        <div style="text-align: center; font-size: 18px; font-weight: 600; color: #2D7A3E; margin-top: 8px;">
                             <span id="pdfsDisplay">100</span> PDFs
                         </div>
                     </div>
 
-                    <div style="background: white; padding: 24px; border-radius: 12px; border: 2px solid #e1e8ed;">
+                    <div style="background: white; padding: 24px; border-radius: 12px; border: 2px solid #D8E8DA;">
                         <div style="text-align: center; color: #5a6c7d; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
                             TIME SAVED PER MONTH
                         </div>
-                        <div style="text-align: center; font-size: 40px; font-weight: 700; color: #1e3c72;">
+                        <div style="text-align: center; font-size: 40px; font-weight: 700; color: #2D7A3E;">
                             <span id="hoursSaved">8.3</span> <span style="font-size: 24px;">hours</span>
                         </div>
-                        <div style="text-align: center; color: #2a5298; font-size: 20px; font-weight: 600; margin-top: 8px;">
+                        <div style="text-align: center; color: #52A461; font-size: 20px; font-weight: 600; margin-top: 8px;">
                             ≈ <span id="costSaved">$332</span> in labor saved*
                         </div>
                         <div style="text-align: center; color: #5a6c7d; font-size: 12px; margin-top: 12px;">
@@ -506,7 +541,7 @@
         </section>
 
         <div class="trust-section">
-            <h2 style="color: #1e3c72; font-size: 24px; margin-bottom: 12px;">Built for Business</h2>
+            <h2 style="color: #2D7A3E; font-size: 24px; margin-bottom: 12px;">Built for Business</h2>
             <p style="color: #5a6c7d; font-size: 16px; max-width: 600px; margin: 0 auto;">Reliable, secure, and designed to save you hours every week</p>
             
             <div class="trust-badges">
@@ -547,7 +582,7 @@
         </div>
 
         <section class="value-props">
-            <h2>Why Choose Us</h2>
+            <h2>Why Choose ParsleyPDF</h2>
             <div class="features" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; margin: 0 auto;">
                 <div class="feature">
                     <div class="feature-icon">
@@ -588,41 +623,41 @@
             <div style="max-width: 700px; margin: 0 auto;">
                 <div style="display: flex; flex-direction: column; gap: 32px;">
                     <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">1</div>
+                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">1</div>
                         <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">Share Your Sample</h3>
+                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #2D7A3E; font-weight: 600;">Share Your Sample</h3>
                             <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Send us a sample PDF and an example of the output format you need. This helps us understand exactly what data you want extracted.</p>
                         </div>
                     </div>
 
                     <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">2</div>
+                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">2</div>
                         <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">We Build Your Extractor</h3>
+                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #2D7A3E; font-weight: 600;">We Build Your Extractor</h3>
                             <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Our team creates custom extraction logic tailored to YOUR document formats. Typically ready in 24-48 hours. No configuration or technical work required from you.</p>
                         </div>
                     </div>
 
                     <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">3</div>
+                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">3</div>
                         <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">Send Your Documents</h3>
+                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #2D7A3E; font-weight: 600;">Send Your Documents</h3>
                             <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Upload PDFs via email, file share, API, or your preferred method. We'll automatically process them as they arrive.</p>
                         </div>
                     </div>
 
                     <div style="display: flex; gap: 20px; align-items: start;">
-                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">4</div>
+                        <div style="flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, #2D7A3E 0%, #52A461 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 700;">4</div>
                         <div>
-                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #1e3c72; font-weight: 600;">Receive Structured Data</h3>
+                            <h3 style="font-size: 20px; margin-bottom: 8px; color: #2D7A3E; font-weight: 600;">Receive Fresh, Structured Data</h3>
                             <p style="color: #5a6c7d; line-height: 1.7; margin: 0;">Get clean, structured data delivered directly to your systems—via email reply, API endpoint, or structured files—ready to use in your database, spreadsheet, or application.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: 32px; padding: 20px; background: #f8f9fa; border-radius: 8px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <div style="text-align: center; margin-top: 32px; padding: 20px; background: #F8FBF8; border-radius: 8px; max-width: 700px; margin-left: auto; margin-right: auto;">
                     <p style="color: #5a6c7d; font-size: 14px; line-height: 1.6; margin: 0;">
-                        <strong style="color: #1e3c72;">Behind the scenes:</strong> We use AI to help build extraction scripts faster, but every output is validated to ensure accuracy. You're not just getting AI - you're getting a service that works.
+                        <strong style="color: #2D7A3E;">Behind the scenes:</strong> We use AI to help build extraction scripts faster, but every output is validated to ensure accuracy. You're not just getting AI - you're getting a service that works.
                     </p>
                 </div>
             </div>
@@ -648,17 +683,17 @@
                 <div class="form-group">
                     <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600; text-align: left;">Upload a sample document (PDF or image)</label>
                     <input type="file" name="document" accept=".pdf,.png,.jpg,.jpeg">
-                    <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 8px; text-align: left;">Or email your sample to: samples@yourservice.com</p>
+                    <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 8px; text-align: left;">Or email your sample to: samples@parsleypdf.com</p>
                 </div>
                 <button type="submit">Get Free Sample Extraction</button>
-                <p style="font-size: 13px; color: #5a6c7d; margin-top: 12px;">No credit card required. See results before you commit.</p>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 12px;">No credit card required. See results before you commit.</p>
             </form>
         </section>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 PDF Extraction Service. All rights reserved.</p>
+            <p>&copy; 2024 ParsleyPDF. All rights reserved.</p>
         </div>
     </footer>
 
