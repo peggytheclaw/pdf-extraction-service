@@ -28,12 +28,13 @@ Most sellers I talk to spend 2-3 hours per week manually
 typing this stuff into spreadsheets or QuickBooks.
 
 We built a service that does it for you:
-→ You email/upload your invoices
-→ We extract the data
-→ You get clean CSVs/Excel back (usually within hours)
+→ You send us a sample invoice
+→ We build a custom extractor for your specific format
+→ Once set up, new invoices are processed instantly (seconds per page)
+→ You get clean CSVs/Excel back automatically
 
 Want to try it with one of your invoices? I'll do it for 
-free to show you what we can do.
+free to show you what we can extract.
 
 Just reply with a sample attached (or let me know if this 
 isn't relevant for you).
@@ -73,12 +74,13 @@ Most bookkeepers I talk to say it's 5-10 hours/week across
 all their clients - tedious work that nobody enjoys.
 
 We built a service specifically for bookkeepers:
-→ Your clients' invoices come in
-→ We extract all the data (vendor, amounts, dates, etc.)
+→ Send us sample invoices from one client
+→ We build a custom extractor for those specific formats
+→ Once running, new invoices are processed instantly (seconds per page)
 → You get structured files ready for QuickBooks/Xero
 
-Want to try it with one client? I'll process 5 invoices for 
-free to show you how much time it saves.
+Want to try it with one client? I'll extract data from 5 sample 
+invoices for free to show you what we can do.
 
 Just reply and let me know!
 
@@ -167,8 +169,9 @@ Just to confirm:
 - What you need: [vendor, amount, date, line items, etc.]
 - Format: CSV or Excel? (your preference)
 
-We'll have your extracted data back within 24-48 hours 
-(usually much faster).
+This first extraction involves some manual setup to understand 
+your specific document format, so timing can vary—we'll get back 
+to you within a few days and keep you updated on progress.
 
 I'll email you as soon as it's ready!
 
@@ -214,12 +217,21 @@ for your ongoing invoices, here's how it works:
 • Enterprise: $399/mo - up to 5,000 pages
 
 📧 How it works:
-1. You email invoices to samples@[domain]
-2. We extract data (usually within 2 hours)
-3. You get CSV/Excel files back automatically
+**Phase 1 - One-time setup:**
+We build a custom extractor tailored to YOUR specific document 
+formats. This takes a few days and involves manual work to get 
+it right—we won't commit to exact timelines until we've reviewed 
+your documents, but we'll keep you updated throughout.
 
-Want to get set up? Just reply "yes" and I'll get you started 
-(takes 2 minutes).
+**Phase 2 - Ongoing automated processing:**
+Once your extractor is running, it's nearly instant:
+• You email invoices to invoices@[domain]
+• Processing takes seconds per page, fully automated
+• You get CSV/Excel files back immediately
+
+The setup is one-time. After that, it's fast and automatic.
+
+Want to get set up? Just reply "yes" and I'll get you started!
 
 Any questions, let me know!
 
@@ -305,9 +317,10 @@ Here's what you need to know:
 Email invoices to: invoices@[domain]
 (or you can upload at [domain]/upload)
 
-⏱️ **Turnaround time:**
-Usually 1-2 hours during business hours
-24 hours max
+⏱️ **Processing time:**
+Your custom extractor is already built and running! New documents 
+are processed automatically in seconds—you'll get results almost 
+instantly.
 
 📊 **You'll receive:**
 CSV or Excel files (your preference) with all extracted data
