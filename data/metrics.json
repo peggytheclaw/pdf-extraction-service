@@ -1,0 +1,101 @@
+{
+  "campaign_status": "PRE-LAUNCH",
+  "last_updated": "2026-02-10",
+  "blockers": [
+    "Email account not set up yet",
+    "IMAP/SMTP credentials needed",
+    "Initial lead list empty"
+  ],
+  "pipeline": {
+    "new": 0,
+    "qualified": 0,
+    "contacted": 0,
+    "follow_up_1": 0,
+    "follow_up_2": 0,
+    "replied": 0,
+    "sample_sent": 0,
+    "converted": 0,
+    "no_response": 0,
+    "disqualified": 0
+  },
+  "weekly_stats": {
+    "week_starting": "2026-02-10",
+    "leads_researched": 0,
+    "emails_sent": 0,
+    "replies_received": 0,
+    "reply_rate": 0,
+    "sample_requests": 0,
+    "conversions": 0,
+    "target_reply_rate": 0.10
+  },
+  "segments": {
+    "AmazonFBA": {
+      "leads": 0,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0
+    },
+    "Shopify": {
+      "leads": 0,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0
+    },
+    "Bookkeeper": {
+      "leads": 0,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0
+    },
+    "Contractor": {
+      "leads": 0,
+      "contacted": 0,
+      "replied": 0,
+      "reply_rate": 0,
+      "converted": 0
+    }
+  },
+  "sources": {
+    "Reddit": {
+      "leads": 0,
+      "reply_rate": 0
+    },
+    "LinkedIn": {
+      "leads": 0,
+      "reply_rate": 0
+    },
+    "Shopify": {
+      "leads": 0,
+      "reply_rate": 0
+    },
+    "IndieHackers": {
+      "leads": 0,
+      "reply_rate": 0
+    }
+  },
+  "templates": {
+    "Template1": {
+      "sent": 0,
+      "replied": 0,
+      "reply_rate": 0
+    },
+    "Template2": {
+      "sent": 0,
+      "replied": 0,
+      "reply_rate": 0
+    },
+    "Template3": {
+      "sent": 0,
+      "replied": 0,
+      "reply_rate": 0
+    },
+    "Template4": {
+      "sent": 0,
+      "replied": 0,
+      "reply_rate": 0
+    }
+  }
+}
